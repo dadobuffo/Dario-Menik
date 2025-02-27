@@ -52,7 +52,6 @@ header {
 
   @supports (animation-timeline: view()) {
     top: -5rem;
-    /*backdrop-filter: blur(0.35rem);*/
     animation: stickyNav linear forwards;
     animation-timeline: view();
     animation-range-start: calc(100vh + var(--_animationStartsAfter));
@@ -107,27 +106,46 @@ main {
 footer {
   background-color: rgba(22, 22, 22, 1);
   color: white;
+  height: 10rem;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  height: 8rem;
-
   .footer-container {
+    width: 80%;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    line-height: 0;
-    font-size: 0.9rem;
+    position: relative;
   }
 
   .footer-mail {
     font-weight: 500;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
   }
 
-  .footer-copyright {
-    letter-spacing: 0.05em;
+  .footer-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 4.5rem;
+  }
+
+  .footer-social {
+    display: flex;
+    align-items: center;
+
+    gap: 1.6rem;
+  }
+
+  .socials-icon {
+    height: 1.4rem;
+    transition: all 0.15s;
+  }
+
+  .socials-icon:hover {
+    filter: brightness(0.6);
   }
 }
 
