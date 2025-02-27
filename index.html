@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="styles/home.css">
 
     <!-- JS -->
-    <script src="js/script.js" defer></script>
+    <script src="scripts/script.js" defer></script>
 
     <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,16 +33,28 @@
 
 <body>
     <header>
-        <img class="logo" src="assets/icons/socials/linkedin.svg">
+        <img class="logo" src="assets/icons/Untitled.svg">
 
         <nav>
             <ul>
+                <li class="hideOnMobile"><a href="index.html">HOME</a></li>
+                <li class="hideOnMobile"><a href="portfolio.html">PORTFOLIO</a></li>
+                <li class="hideOnMobile"><a href="#about">ABOUT</a></li>
+                <li class="hideOnMobile"><a href="#contact">CONTACT</a></li>
+            </ul>
+            <ul class="sidebar">
+                <li class="close-sidebar-button" onclick=hideSidebar()>
+                    <img src="assets/icons/close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg">
+                </li>
                 <li><a href="index.html">HOME</a></li>
                 <li><a href="portfolio.html">PORTFOLIO</a></li>
                 <li><a href="#about">ABOUT</a></li>
                 <li><a href="#contact">CONTACT</a></li>
             </ul>
         </nav>
+
+        <img class="open-sidebar-button" onclick=showSidebar()
+            src="assets/icons/menu_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg">
     </header>
 
     <section class="hero">
@@ -60,7 +72,7 @@
 
     <main>
 
-
+        <!--
 
         <div></div>
         <div>GIOCHI A CUI HO LAVORATO</div>
@@ -134,7 +146,7 @@
         </section>
 
 
-
+    -->
 
         <div>ABOUT ME</div>
         <div>SERVICES</div>
