@@ -1,0 +1,137 @@
+/*
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+*/
+html {
+  scroll-behavior: smooth;
+  /*
+  scroll-padding-top: var(--scroll-padding, 50px);
+  */
+}
+
+body {
+  background-color: rgb(245, 245, 245);
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: rgb(22, 22, 22);
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: transparent;
+  color: rgba(0, 0, 0, 1);
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 5rem;
+  padding: 0 5rem;
+
+  position: sticky;
+  z-index: 1000;
+  top: 0rem;
+
+  --_animationStartsAfter: 48rem;
+  --_animationDistance: 3rem;
+  --_navGap: 2rem;
+
+  @supports (animation-timeline: view()) {
+    top: -5rem;
+    /*backdrop-filter: blur(0.35rem);*/
+    animation: stickyNav linear forwards;
+    animation-timeline: view();
+    animation-range-start: calc(100vh + var(--_animationStartsAfter));
+    animation-range-end: calc(
+      100vh + var(--_animationStartsAfter) + var(--_animationDistance)
+    );
+
+    .logo {
+      background-color: rgba(22, 22, 22, 1);
+
+      display: var(--_logoDisplay, block);
+      fill: currentColor;
+      height: 3rem;
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      gap: var(--_navGap, 2rem);
+      margin: 0;
+      padding: 0;
+    }
+
+    a:hover,
+    a:focus {
+      color: rgb(120, 120, 120);
+    }
+  }
+}
+@keyframes stickyNav {
+  0%,
+  100% {
+    --_logoDisplay: none;
+    justify-content: center;
+  }
+
+  100% {
+    background-color: rgba(22, 22, 22, 1);
+    color: rgb(255, 255, 255);
+    height: 4rem;
+    top: 0rem;
+    box-shadow: 0 0 0.75rem rgba(0, 0, 0, 0.5);
+    --_navGap: 4rem;
+  }
+}
+
+main {
+  flex-grow: 1;
+  background-color: transparent;
+}
+
+footer {
+  background-color: rgba(22, 22, 22, 1);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 8rem;
+
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 0;
+    font-size: 0.9rem;
+  }
+
+  .footer-mail {
+    font-weight: 500;
+    letter-spacing: 0.1em;
+  }
+
+  .footer-copyright {
+    letter-spacing: 0.05em;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

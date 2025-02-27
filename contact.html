@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Artifacts Recordings</title>
+
+    <!-- METADATA -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Dario Menik">
+    <meta name="description" content="Audio Engineer, Producer, Sound Designer.">
+    <meta name="theme-color" content="#161616">
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/contact.css">
+
+    <!-- JS -->
+    <script src="scripts/contact-form.js" defer></script>
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="header-left-section">
+            <p>artifacts recordings</p>
+        </div>
+
+        <nav class="header-right-section">
+            <p> <a href="index.html">home</a> </p>
+            <p> <a href="discography.html">discography</a> </p>
+            <p> <a href="faq.html">faq</a> </p>
+            <p> <a href="contact.html">contact</a> </p>
+        </nav>
+    </header>
+
+    <main>
+        <div class="contact-title">
+            <h1>HAVE A PROJECT?</h1>
+        </div>
+
+        <div class="contact-text">
+            <div>
+                <p>Get in touch and tell me what I can do for you! </p>
+                <p>Let me know what you're looking for, feel free to provide detailed information about your project and
+                    ask any questions you may have.</p>
+            </div>
+            <div>
+                <p>Fill the form below or drop me an email &#126;</p>
+            </div>
+        </div>
+
+        <div class="contact-options">
+            <p> <a class="mail" href="mailto:dariomenik@gmail.com"> dariomenik@gmail.com </a> </p>
+            <p> &#8226; </p>
+            <div style="width: 205px;">
+                <div class="contact-socials">
+                    <a href="http://facebook.com/artifacts.rec" target="_blank">
+                        <img class="socials-icon" src="assets/icons/socials/facebook.svg"
+                            alt="Follow me on Facebook">
+                    </a>
+                    <a href="http://instagram.com/dariomenik_mon/" target="_blank">
+                        <img class="socials-icon" src="assets/icons/socials/instagram.svg"
+                            alt="Follow me on Instagram">
+                    </a>
+                    <a href="http://linkedin.com/in/dario-menichetti/" target="_blank">
+                        <img class="socials-icon" src="assets/icons/socials/linkedin.svg"
+                            alt="Follow me on LinkedIn">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <form class="contact-form" id="contact-form" action="https://formspree.io/f/xbldaogz" method="POST">
+            <input class="contact-form-box" type="text" name="name" id="name" placeholder="your name  &ast;" required>
+            <input class="contact-form-box" type="email" name="email" id="email" placeholder="email &ast;" required>
+            <input class="contact-form-box" type="text" name="subject" id="subject" placeholder="subject">
+            <fieldset class="contact-form-checkboxes">
+                <label class="contact-form-checkboxes-label"> what do you need? </label>
+
+                <div class="checkbox-row">
+                    <input type="checkbox" name="need-production" id="need-production" value="1">
+                    <label for="need-production"> production </label>
+                </div>
+                <div class="checkbox-row">
+                    <input type="checkbox" name="need-mixing" id="need-mixing" value="1">
+                    <label for="need-mixing"> mixing </label>
+                </div>
+                <div class="checkbox-row">
+                    <input type="checkbox" name="need-mastering" id="need-mastering" value="1">
+                    <label for="need-mastering"> mastering </label>
+                </div>
+                <div class="checkbox-row">
+                    <input type="checkbox" name="need-other" id="need-other" value="1">
+                    <label for="need-other"> other (specify below) </label>
+                </div>
+            </fieldset>
+            <textarea class="contact-form-textarea" name="message" id="message" rows="5"
+                placeholder="tell me about your project &ast;" required></textarea>
+            <button class="contact-form-submit-button" type="submit"> SUBMIT </button>
+        </form>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <p> <a class="footer-mail" href="mailto:dariomenik@gmail.com"> dariomenik@gmail.com </a> </p>
+            <p class="footer-copyright"> &copy; 2024 &vert; All Rights Reserved </p>
+        </div>
+    </footer>
+</body>
+
+</html>

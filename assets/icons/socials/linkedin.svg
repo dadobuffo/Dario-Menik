@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 431 431" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,0,-0.05)">
+        <g>
+            <path id="LinkedIn" d="M430.1,261.5L430.1,420.5L337.9,420.5L337.9,272.2C337.9,234.9 324.6,209.5 291.2,209.5C265.7,209.5 250.6,226.6 243.9,243.2C241.5,249.1 240.8,257.4 240.8,265.7L240.8,420.6L148.6,420.6C148.6,420.6 149.8,169.3 148.6,143.3L240.8,143.3L240.8,182.6C240.6,182.9 240.4,183.2 240.2,183.5L240.8,183.5L240.8,182.6C253.1,163.7 274.9,136.8 323.9,136.8C384.6,136.7 430.1,176.4 430.1,261.5ZM52.2,9.6C20.6,9.6 0,30.3 0,57.5C0,84.1 20,105.4 51,105.4L51.6,105.4C83.8,105.4 103.8,84.1 103.8,57.5C103.1,30.3 83.7,9.6 52.2,9.6ZM5.5,420.6L97.7,420.6L97.7,143.2L5.5,143.2L5.5,420.6Z" style="fill:white;fill-rule:nonzero;"/>
+        </g>
+    </g>
+</svg>

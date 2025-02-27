@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Dario Menik</title>
+
+    <!-- METADATA -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Dario Menik">
+    <meta name="description" content="Audio Engineer, Producer, Sound Designer.">
+    <meta name="theme-color" content="#161616">
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/portfolio.css">
+
+    <!-- JS -->
+    <script src="js/script.js" defer></script>
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <img class="logo" src="assets/icons/socials/linkedin.svg">
+
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="portfolio.html">PORTFOLIO</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <ul class="filters">
+            <li class="current">all</li>
+            <p>·</p>
+            <li>AAA</li>
+            <p>·</p>
+            <li>BBB</li>
+            <p>·</p>
+            <li>CCC</li>
+        </ul>
+
+        <div class="grid-container">
+            <a href="faq.html" class="grid-element" data-filter="AAA">
+                <video autoplay loop muted playsinline>
+                    <source src="assets/gifs/Music-Sound_Smallest.mp4" type="video/mp4">
+                </video>
+                <div class="grid-element-text">
+                    <p>AAA</p>
+                </div>
+            </a>
+            <a href="faq.html" class="grid-element" data-filter="AAA,BBB">
+                <video autoplay loop muted playsinline>
+                    <source src="assets\gifs\PassionProjects_Smallest.mp4" type="video/mp4">
+                </video>
+                <div class="grid-element-text">
+                    <p>AAA</p>
+                </div>
+            </a>
+            <a href="faq.html" class="grid-element" data-filter="BBB">
+                <video autoplay loop muted playsinline>
+                    <source src="assets/gifs/VRARGaming_Smallest.mp4" type="video/mp4">
+                </video>
+                <div class="grid-element-text">
+                    <p>AAA</p>
+                </div>
+            </a>
+            <a href="faq.html" class="grid-element" data-filter="BBB">
+                <video autoplay loop muted playsinline>
+                    <source src="assets/gifs/Music-Sound_Smallest.mp4" type="video/mp4">
+                </video>
+                <div class="grid-element-text">
+                    <p>AAA</p>
+                </div>
+            </a>
+            <a href="faq.html" class="grid-element" data-filter="CCC">
+                <video autoplay loop muted playsinline>
+                    <source src="assets\gifs\PassionProjects_Smallest.mp4" type="video/mp4">
+                </video>
+                <div class="grid-element-text">
+                    <p>AAA</p>
+                </div>
+            </a>
+            <a href="faq.html" class="grid-element" data-filter="AAA,CCC">
+                <video autoplay loop muted playsinline>
+                    <source src="assets/gifs/VRARGaming_Smallest.mp4" type="video/mp4">
+                </video>
+                <div class="grid-element-text">
+                    <p>AAA</p>
+                </div>
+            </a>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const filterButtons = document.querySelectorAll('.filters li');
+                const gridElements = document.querySelectorAll('.grid-container .grid-element');
+
+                filterButtons.forEach(button => {
+                    button.addEventListener("click", function () {
+                        filterButtons.forEach(el => el.classList.remove("current"));
+                        button.classList.add("current");
+
+                        const filterValue = button.textContent.trim();
+
+                        gridElements.forEach(element => {
+                            const filters = element.getAttribute('data-filter').split(',').map(f => f.trim());
+
+                            if (filterValue === "all" || filters.some(f => f === filterValue)) {
+                                element.classList.remove("hidden");
+                            } else {
+                                element.classList.add("hidden");
+                            }
+                        });
+                    });
+                });
+            });
+        </script>
+
+
+
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <p> <a class="footer-mail" href="mailto:dariomenik@gmail.com"> dariomenik@gmail.com </a> </p>
+            <p class="footer-copyright"> INSERIRE SOCIAL QUI</p>
+        </div>
+    </footer>
+</body>
+
+</html>
