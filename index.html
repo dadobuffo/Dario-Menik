@@ -33,44 +33,55 @@
 
 <body>
     <header>
-        <img class="logo" src="assets/icons/Untitled.svg">
-
-        <nav>
+        <div class="absolute-header">
+            <img class="logo" src="assets/icons/Untitled.svg">
+            <nav>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="portfolio.html">PORTFOLIO</a></li>
+                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="fixed-header">
             <ul>
-                <li class="hideOnMobile"><a href="index.html">HOME</a></li>
-                <li class="hideOnMobile"><a href="portfolio.html">PORTFOLIO</a></li>
-                <li class="hideOnMobile"><a href="#about">ABOUT</a></li>
-                <li class="hideOnMobile"><a href="#contact">CONTACT</a></li>
-            </ul>
-            <ul class="sidebar">
-                <li class="close-sidebar-button" onclick=hideSidebar()>
-                    <img src="assets/icons/close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg">
-                </li>
                 <li><a href="index.html">HOME</a></li>
                 <li><a href="portfolio.html">PORTFOLIO</a></li>
-                <li><a href="#about">ABOUT</a></li>
-                <li><a href="#contact">CONTACT</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">CONTACT</a></li>
             </ul>
-        </nav>
+        </div>
+        <div class="sidebar-header">
+            <img class="logo" src="assets/icons/Untitled.svg">
+            <img class="open-sidebar-button" onclick=showSidebar()
+                src="assets/icons/menu_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg">
 
-        <img class="open-sidebar-button" onclick=showSidebar()
-            src="assets/icons/menu_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg">
+            <ul class="sidebar">
+                <img class="menu-logo" src="assets/icons/Untitled.svg">
+                <img class="close-sidebar-button" onclick=hideSidebar()
+                    src="assets/icons/close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="portfolio.html">PORTFOLIO</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">CONTACT</a></li>
+            </ul>
+        </div>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
+
+    <main>
+        <section class="hero">
             <video autoplay loop muted playsinline>
-                <source src="assets/gifs/Music-Sound_Smallest.mp4" type="video/mp4">
+                <source src="assets/gifs/Mix.mp4" type="video/mp4">
             </video>
+            <div class="overlay"></div>
             <div class="hero-text">
                 <h1>Benvenuto nel nostro sito</h1>
                 <p>Scopri tutto ciò che abbiamo da offrire e inizia la tua avventura con noi.</p>
                 <a href="#cta" class="cta-button">Scopri di più</a>
             </div>
-        </div>
-    </section>
-
-    <main>
+        </section>
 
         <!--
 
@@ -173,7 +184,7 @@
     <footer>
         <div class="footer-container">
             <a class="footer-mail" href="mailto:dariomenik@gmail.com"> dariomenik@gmail.com </a>
-            <img class="footer-logo" src="assets/icons/logo.svg" alt="">
+            <p class="hideOnMobile">·</p>
             <div class="footer-social">
                 <a href="https://wa.me/393883917855" target="_blank">
                     <img class="socials-icon" src="assets/icons/socials/whatsapp.svg" alt="Contact me on WhatsApp">
