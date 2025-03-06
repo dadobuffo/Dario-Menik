@@ -6,6 +6,7 @@
 }
 
 a {
+  font-family: inherit;
   color: inherit;
   transition: color 0.1s;
 }
@@ -17,6 +18,7 @@ body {
   font-size: 1rem;
   font-weight: 400;
   letter-spacing: 0.05em;
+  line-height: normal;
   color: rgb(22, 22, 22);
 
   display: flex;
@@ -45,7 +47,7 @@ header {
     background-color: transparent;
     color: white;
     font-weight: 500;
-    text-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+    text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
 
     z-index: 1000;
 
