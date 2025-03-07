@@ -82,82 +82,195 @@
                 <a href="#cta" class="cta-button">Scopri di più</a>
             </div>
         </section>
+        <hr class="divider">
 
-        <!--
+        <h1 class="page-title"> PORTFOLIO </h1>
 
-        <div></div>
-        <div>GIOCHI A CUI HO LAVORATO</div>
+        <div class="page-description">
+            <p>
+                Welcome to my portfolio! I’m a sound designer, composer, and audio engineer with a passion for creating
+                immersive soundscapes for games, music, and more. Here, you'll find a collection of my work, from sound
+                design and original compositions to fan-made projects I’ve done out of passion. I’ve had the opportunity
+                to contribute to a variety of games, handling everything from sound recording and design to composition
+                and implementation.
+            </p>
+            <p>
+                If you're interested in checking out more of my work as an audio engineer, feel free to visit my other
+                site <a href="https://artifactsrecordings.com" target="_blank">Artifacts Recordings</a>
+            </p>
+        </div>
+        <div class="showreel-button">
+            <hr>
+            <button onclick="openModal('showreel')">SHOWREEL</button>
+            <hr>
+        </div>
 
-        <section class="works-section" id="works">
+        <ul class="filters">
+            <li class="current">all</li>
+            <div class="dot-divider hideOnMobile">•</div>
+            <li>linear audio</li>
+            <div class="dot-divider hideOnMobile">•</div>
+            <li>game audio</li>
+            <div class="dot-divider hideOnMobile">•</div>
+            <li>fun projects</li>
+        </ul>
 
-            <h1 class=" section-title">FUN PROJECTS</h1>
+        <div class="grid-container fade-in">
+            <a href="#" class="grid-element" data-filter="linear audio,fun projects" onclick="openModal('prey')">
+                <video autoplay loop muted playsinline>
+                    <source src="assets/works/Prey_gif.mp4" type="video/mp4">
+                </video>
+                <div class="grid-element-text">
+                    <p>Prey E3 Trailer (audio replacement)</p>
+                </div>
+            </a>
+            <a href="#" class="grid-element" data-filter="game audio" onclick="openModal('necrologium')">
+                <video autoplay loop muted playsinline>
+                    <source src="assets\gifs\PassionProjects_Smallest.mp4" type="video/mp4">
+                </video>
+                <div class="grid-element-text">
+                    <p>Necrologium</p>
+                </div>
+            </a>
+            <a href="faq.html" class="grid-element" data-filter="game audio" onclick="openModal('prey')">
+                <video autoplay loop muted playsinline>
+                    <source src="assets/gifs/VRARGaming_Smallest.mp4" type="video/mp4">
+                </video>
+                <div class="grid-element-text">
+                    <p>AAA</p>
+                </div>
+            </a>
+            <a href="faq.html" class="grid-element" data-filter="linear audio" onclick="openModal('prey')">
+                <video autoplay loop muted playsinline>
+                    <source src="assets/gifs/Music-Sound_Smallest.mp4" type="video/mp4">
+                </video>
+                <div class="grid-element-text">
+                    <p>AAA</p>
+                </div>
+            </a>
+            <a href="faq.html" class="grid-element" data-filter="linear audio,fun projects" onclick="openModal('prey')">
+                <video autoplay loop muted playsinline>
+                    <source src="assets\gifs\PassionProjects_Smallest.mp4" type="video/mp4">
+                </video>
+                <div class="grid-element-text">
+                    <p>AAA</p>
+                </div>
+            </a>
+            <a href="faq.html" class="grid-element" data-filter="linear audio,fun projects" onclick="openModal('prey')">
+                <video autoplay loop muted playsinline>
+                    <source src="assets/gifs/VRARGaming_Smallest.mp4" type="video/mp4">
+                </video>
+                <div class="grid-element-text">
+                    <p>AAA</p>
+                </div>
+            </a>
+        </div>
 
-            <div class="grid-container">
-                <a href="faq.html" class="grid-element">
-                    <video autoplay loop muted playsinline>
-                        <source src="assets/gifs/Music-Sound_Smallest.mp4" type="video/mp4">
+        <!-- modals -->
+
+        <div id="showreel" class="modal">
+            <div class="modal-content fade-in">
+                <img class="close-modal-button" onclick="closeModal()" src="assets/icons/close_24dp_white.svg">
+
+                <div class="left-section">
+                    <video controls preload="metadata" poster="assets/works/Prey_preview.png">
+                        <source src="assets/works/Prey_video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
                     </video>
+                </div>
 
-                    <div class="grid-element-overlay"></div>
-                    <div class="grid-element-text">
-                        <p>AAA</p>
-                    </div>
-                </a>
-                <a href="faq.html" class="grid-element">
-                    <video autoplay loop muted playsinline>
-                        <source src="assets\gifs\PassionProjects_Smallest.mp4" type="video/mp4">
-                    </video>
+                <div class="right-section">
+                    <h2> Sound Design Reel</h2>
 
-                    <div class="grid-element-overlay"></div>
-                    <div class="grid-element-text">
-                        <p>AAA</p>
+                    <div class="description">
+                        <p> A collection of sound design works I've done over the years, including... </p>
                     </div>
-                </a>
-                <a href="faq.html" class="grid-element">
-                    <video autoplay loop muted playsinline>
-                        <source src="assets/gifs/VRARGaming_Smallest.mp4" type="video/mp4">
-                    </video>
-
-                    <div class="grid-element-overlay"></div>
-                    <div class="grid-element-text">
-                        <p>AAA</p>
-                    </div>
-                </a>
-                <a href="faq.html" class="grid-element">
-                    <video autoplay loop muted playsinline>
-                        <source src="assets/gifs/Music-Sound_Smallest.mp4" type="video/mp4">
-                    </video>
-
-                    <div class="grid-element-overlay"></div>
-                    <div class="grid-element-text">
-                        <p>AAA</p>
-                    </div>
-                </a>
-                <a href="faq.html" class="grid-element">
-                    <video autoplay loop muted playsinline>
-                        <source src="assets\gifs\PassionProjects_Smallest.mp4" type="video/mp4">
-                    </video>
-
-                    <div class="grid-element-overlay"></div>
-                    <div class="grid-element-text">
-                        <p>AAA</p>
-                    </div>
-                </a>
-                <a href="faq.html" class="grid-element">
-                    <video autoplay loop muted playsinline>
-                        <source src="assets/gifs/VRARGaming_Smallest.mp4" type="video/mp4">
-                    </video>
-
-                    <div class="grid-element-overlay"></div>
-                    <div class="grid-element-text">
-                        <p>AAA</p>
-                    </div>
-                </a>
+                </div>
             </div>
-        </section>
+        </div>
 
+        <div id="prey" class="modal">
+            <div class="modal-content fade-in">
+                <img class="close-modal-button" onclick="closeModal()" src="assets/icons/close_24dp_white.svg">
 
-    -->
+                <div class="left-section">
+                    <video controls preload="metadata" poster="assets/works/Prey_preview.png">
+                        <source src="assets/works/Prey_video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                <div class="right-section">
+                    <h2>Prey E3 Trailer <span style="font-size: 1rem;">(audio replacement)</span></h2>
+
+                    <div class="description">
+                        <p> I completely reimagined the trailer’s audio, replacing all original elements. This
+                            included
+                            recording and synthesizing new sound effects for movement, environment, creatures,
+                            weapons,
+                            and
+                            UI. </p>
+                        <p>I recorded an Italian voice-over for the dialogue and composed
+                            new music to enhance the trailer’s tone and pacing. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="necrologium" class="modal">
+            <div class="modal-content fade-in">
+                <img class="close-modal-button" onclick="closeModal()" src="assets/icons/close_24dp_white.svg">
+
+                <div class="left-section fade-in">
+                    <div class="slideshow-container">
+
+                        <div class="mySlides">
+                            <video controls preload="metadata" poster="assets/works/Prey_preview.png">
+                                <source src="assets/works/Prey_video.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+
+                        <div class="mySlides">
+                            <img src="assets/works/Prey_preview.png" style="width:100%">
+                            <div class="text">Caption Two</div>
+                        </div>
+
+                        <div class="mySlides">
+                            <img src="assets/works/Prey_preview.png" style="width:100%">
+                            <div class="text">Caption Three</div>
+                        </div>
+
+                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                    </div>
+                    <br>
+
+                    <div style="text-align:center">
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                    </div>
+                </div>
+
+                <div class="right-section fade-in">
+                    <h2>Necrologium</span></h2>
+
+                    <div class="description">
+                        <p> I completely reimagined the trailer’s audio, replacing all original elements. This
+                            included
+                            recording and synthesizing new sound effects for movement, environment, creatures,
+                            weapons,
+                            and
+                            UI. </p>
+                        <p>I recorded an Italian voice-over for the dialogue and composed
+                            new music to enhance the trailer’s tone and pacing. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="divider">
 
         <div>ABOUT ME</div>
         <div>SERVICES</div>
