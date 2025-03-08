@@ -55,9 +55,6 @@
   margin: 0;
 }
 
-.player-role p {
-}
-
 .player-controls {
   display: flex;
   flex-direction: column;
