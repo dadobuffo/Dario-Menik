@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-
+/*
 // modal
 
 let currentModal = null;
@@ -130,4 +130,92 @@ function showSlides(n) {
   }
   slides[slideIndex - 1].style.display = "block";
   dots[slideIndex - 1].className += " active";
+}
+*/
+
+// modal
+
+let currentModal = null;
+let slideIndex = 1;
+
+function openModal(modalId) {
+  const modal = document.getElementById(modalId);
+
+  if (modal) {
+    if (currentModal) closeModal();
+
+    modal.style.display = "flex";
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden";
+    currentModal = modal;
+
+    slideIndex = 1;
+    showSlides(slideIndex);
+  }
+}
+
+function closeModal() {
+  if (!currentModal) return;
+
+  currentModal.style.display = "none";
+  currentModal.classList.remove("active");
+  document.body.style.overflow = "";
+
+  stopVideo(currentModal);
+
+  currentModal = null;
+}
+
+function plusSlides(n) {
+  showSlides((slideIndex += n));
+}
+
+function currentSlide(n) {
+  showSlides((slideIndex = n));
+}
+
+function showSlides(n) {
+  const activeModal = document.querySelector(".modal.active");
+  if (!activeModal) return;
+
+  const slides = activeModal.querySelectorAll(".mySlides");
+  const dots = activeModal.querySelectorAll(".dot");
+
+  if (slides.length === 0) return;
+
+  stopVideo(activeModal);
+
+  if (n > slides.length) {
+    slideIndex = 1;
+  }
+  if (n < 1) {
+    slideIndex = slides.length;
+  }
+
+  slides.forEach((slide) => {
+    slide.style.display = "none";
+  });
+
+  dots.forEach((dot) => {
+    dot.classList.remove("active");
+  });
+
+  slides[slideIndex - 1].style.display = "block";
+  if (dots[slideIndex - 1]) {
+    dots[slideIndex - 1].classList.add("active");
+  }
+}
+
+window.addEventListener("click", function (event) {
+  if (currentModal && event.target === currentModal) {
+    closeModal();
+  }
+});
+
+function stopVideo(modal) {
+  const video = modal.querySelector("video");
+
+  if (video) {
+    video.pause();
+  }
 }
