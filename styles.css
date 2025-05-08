@@ -210,6 +210,7 @@ footer {
 
   .socials-icon {
     height: 1.3rem;
+    transition: filter 0.1s;
   }
 
   .socials-icon:hover {
@@ -543,6 +544,41 @@ footer {
       line-height: 1.5;
       font-weight: 300;
     }
+
+    .links {
+      margin-top: 1rem;
+
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+      hr {
+        border: none;
+        height: 1px;
+        width: 100%;
+        margin: 0 3rem;
+
+        background-color: rgba(255, 255, 255, 0.6);
+      }
+
+      .links-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 1.6rem;
+
+        .link-icon {
+          height: 1.5rem;
+          transition: filter 0.1s;
+        }
+
+        .link-icon:hover {
+          filter: brightness(0.6);
+        }
+      }
+    }
   }
 }
 
@@ -563,6 +599,7 @@ footer {
   gap: 1rem;
 
   .box-text {
+    font-size: 1.3rem;
   }
 
   .programs-icon-container {
