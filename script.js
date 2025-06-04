@@ -56,82 +56,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-/*
-// modal
-
-let currentModal = null;
-
-function openModal(modalId) {
-  const modal = document.getElementById(modalId);
-
-  if (modal) {
-    if (currentModal) {
-      closeModal();
-    }
-
-    modal.style.display = "flex";
-    document.body.style.overflow = "hidden";
-    currentModal = modal;
-  }
-}
-
-function closeModal() {
-  if (currentModal) {
-    currentModal.style.display = "none";
-    document.body.style.overflow = "";
-    stopVideo(currentModal);
-
-    currentModal = null;
-  }
-}
-
-function stopVideo(modal) {
-  const video = modal.querySelector("video");
-
-  if (video) {
-    video.pause();
-  }
-}
-
-window.onclick = function (event) {
-  if (event.target.classList.contains("modal")) {
-    closeModal();
-  }
-};
-
-// carousel
-
-let slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-  showSlides((slideIndex += n));
-}
-
-function currentSlide(n) {
-  showSlides((slideIndex = n));
-}
-
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {
-    slideIndex = 1;
-  }
-  if (n < 1) {
-    slideIndex = slides.length;
-  }
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex - 1].style.display = "block";
-  dots[slideIndex - 1].className += " active";
-}
-*/
 
 // modal
 
@@ -151,18 +75,31 @@ function openModal(modalId) {
 
     slideIndex = 1;
     showSlides(slideIndex);
+
+    const slideContainer =
+      modal.querySelector(".modal-slideshow-container") || modal;
+    slideContainer.addEventListener("touchstart", handleTouchStart, {
+      passive: true,
+    });
+    slideContainer.addEventListener("touchend", handleTouchEnd, {
+      passive: true,
+    });
   }
 }
 
 function closeModal() {
   if (!currentModal) return;
 
+  const slideContainer =
+    currentModal.querySelector(".modal-slideshow-container") || currentModal;
+  slideContainer.removeEventListener("touchstart", handleTouchStart);
+  slideContainer.removeEventListener("touchend", handleTouchEnd);
+
   currentModal.style.display = "none";
   currentModal.classList.remove("active");
   document.body.style.overflow = "";
 
   stopVideo(currentModal);
-
   currentModal = null;
 }
 
@@ -205,6 +142,27 @@ function showSlides(n) {
     dots[slideIndex - 1].classList.add("active");
   }
 }
+let touchStartX = 0;
+let touchEndX = 0;
+
+function handleTouchStart(event) {
+  touchStartX = event.changedTouches[0].screenX;
+}
+
+function handleTouchEnd(event) {
+  touchEndX = event.changedTouches[0].screenX;
+  handleGesture();
+}
+
+function handleGesture() {
+  const swipeThreshold = 50;
+
+  if (touchEndX < touchStartX - swipeThreshold) {
+    plusSlides(1);
+  } else if (touchEndX > touchStartX + swipeThreshold) {
+    plusSlides(-1);
+  }
+}
 
 window.addEventListener("click", function (event) {
   if (currentModal && event.target === currentModal) {
@@ -213,9 +171,35 @@ window.addEventListener("click", function (event) {
 });
 
 function stopVideo(modal) {
-  const video = modal.querySelector("video");
-
-  if (video) {
+  const videos = modal.querySelectorAll("video");
+  videos.forEach((video) => {
     video.pause();
-  }
+  });
 }
+
+// pause videos when not in view
+
+const videos = document.querySelectorAll(".anim-video");
+
+const options = {
+  root: null,
+  rootMargin: "0px",
+  threshold: 0.5,
+};
+
+const callback = (entries) => {
+  entries.forEach((entry) => {
+    const video = entry.target;
+    if (entry.isIntersecting) {
+      video.play().catch((e) => console.log("Playback prevented:", e));
+    } else {
+      video.pause();
+    }
+  });
+};
+
+const observer = new IntersectionObserver(callback, options);
+
+videos.forEach((video) => {
+  observer.observe(video);
+});
