@@ -432,8 +432,9 @@
         <section id="contact" class="contact-section" id="contact">
             <div class="contact-left-section">
 
-                <h1 class=" contact-title">Let's create something together! </h1>
+                <h1 class=" contact-title">GET IN TOUCH</h1>
                 <div class="contact-description">
+                    <p>Interested in working together?</p>
                     <p> Drop me an email or fill the form below ~ </p>
                 </div>
                 <div class="contact-mail">
@@ -441,23 +442,36 @@
                 </div>
             </div>
             <div class="contact-right-section">
-                <form class="contact-form" id="contact-form" action="https://formspree.io/f/xbldaogz" method="POST">
-                    <input class="contact-form-box" type="text" name="name" id="name" placeholder="your name &ast;"
-                        required>
-                    <input class="contact-form-box" type="email" name="email" id="email" placeholder="email &ast;"
-                        required>
-                    <input class="contact-form-box" type="text" name="subject" id="subject" placeholder="subject">
-                    <textarea class="contact-form-textarea" name="message" id="message" rows="5"
-                        placeholder="message &ast;" required></textarea>
-                    <button class="contact-form-submit-button" type="submit"> SUBMIT </button>
+                <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+
+                    <input type="hidden" name="access_key" value="4c5c682c-ebd8-4920-be9d-38d34ea3ecfb">
+                    <input type="hidden" name="redirect" value="https://dariomenik.com/thanks.html">
+                    <input type="hidden" name="replyto" value="email">
+                    <input type="hidden" name="from_name" value="dariomenik.com">
+
+                    <input class="contact-form-box" type="text" name="name" placeholder="your name &ast;" required>
+                    <input class="contact-form-box" type="email" name="email" placeholder="email &ast;" required>
+                    <textarea class=" contact-form-textarea" name="message" rows="5" placeholder="message &ast;"
+                        required></textarea>
+                    <button class="contact-form-submit-button" type="submit">SUBMIT</button>
+
                 </form>
             </div>
-
         </section>
 
+        <div id="temp-modal" class="temp-modal-overlay">
+            <div class="temp-modal-content">
+                <h2>🚧 Website Under Construction 🚧</h2>
 
+                <div class="temp-modal-text">
+                    <p>I'm re-working some parts of the website. You might find incomplete sections or features in
+                        development. </p>
+                    <p>Thank you for your patience!</p>
+                </div>
 
-
+                <button class="temp-modal-close-btn" onclick="closeModal()">GOT IT!</button>
+            </div>
+        </div>
     </main>
 
     <footer>
