@@ -67,14 +67,11 @@
     </header>
 
     <main>
-        <section id="hero" class="hero-section">
-            <video autoplay loop muted playsinline>
-                <source src="assets/gifs/Mix.mp4" type="video/mp4">
-            </video>
-            <div class="hero-overlay"></div>
-            <div class="hero-text">
-                <h1>SOUND DESIGNER • AUDIO ENGINEER • COMPOSER</h1>
-                <a href="#cta" class="cta-button">Scopri di più</a>
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <h1>SOUND DESIGNER | COMPOSER | AUDIO ENGINEER</h1>
+                <p>I craft immersive audio for games and film — from soundscapes to in-game systems. </p>
+                <a href="#portfolio" class="hero-cta">SEE MY WORK</a>
             </div>
         </section>
 
@@ -142,6 +139,7 @@
                         <p>Prey E3 Trailer (audio replacement)</p>
                     </div>
                 </a>
+                <!--
                 <a class="grid-element" data-filter="linear audio,fun projects" onclick="openModal('prey')">
                     <video loop muted playsinline preload="none" class="anim-video">
                         <source src="assets/previews/Prey.webm" type="video/webm">
@@ -172,6 +170,7 @@
                         <p>Prey E3 Trailer (audio replacement)</p>
                     </div>
                 </a>
+                -->
             </div>
 
             <!-- modals -->
@@ -310,18 +309,18 @@
                         <div class="modal-slideshow-container">
 
                             <div class="mySlides">
-                                <img src="assets/modal/Prey_preview.png" style="width:100%">
-                                <div class="slide-description">Caption One</div>
+                                <img src="assets/modal/Ammazzacaffé_1.jpg">
+                                <div class="slide-description">Game Cover</div>
                             </div>
 
                             <div class="mySlides">
-                                <img src="assets/modal/Prey_preview.png" style="width:100%">
-                                <div class="slide-description">Caption Two</div>
+                                <img src="assets/modal/Ammazzacaffé_FMOD.jpg">
+                                <div class="slide-description">FMOD Project</div>
                             </div>
 
                             <div class="mySlides">
-                                <img src="assets/modal/Prey_preview.png" style="width:100%">
-                                <div class="slide-description">Caption Three</div>
+                                <img src="assets/modal/Ammazzacaffé_Unity.jpg">
+                                <div class="slide-description">Unity audio implementation</div>
                             </div>
 
                             <img class="prev-button" onclick="plusSlides(-1)" src="assets/icons/arrow_left.svg">
@@ -340,14 +339,12 @@
                         <h2>Ammazzacaffè <span style="font-size: 1.2rem;">(game jam)</span></h2>
 
                         <div class="modal-description">
-                            <p> I completely reimagined the trailer’s audio, replacing all original elements. This
-                                included
-                                recording and synthesizing new sound effects for movement, environment, creatures,
-                                weapons,
-                                and
-                                UI. </p>
-                            <p>I recorded an Italian voice-over for the dialogue and composed
-                                new music to enhance the trailer’s tone and pacing. </p>
+                            <p>I composed the game's musical themes and designed the soundscape, recording most
+                                sound effects from scratch.</p>
+                            <p>This included gibberish vocals for all characters, ambient layers, UI feedback, character
+                                actions, and interactive audio elements.</p>
+                            <p>I implemented everything in Unity using custom scripts and audio managers to ensure
+                                responsive integration with gameplay systems.</p>
                         </div>
 
                         <div class="modal-links">
@@ -363,11 +360,11 @@
                 </div>
             </div>
 
-            <hr class="divider">
+            <hr class="divider" id="about">
 
         </section>
 
-        <section id="about" class="about-section">
+        <section class="about-section">
 
             <div class="about-container">
                 <div class="about-left-section">
@@ -427,9 +424,9 @@
 
         </section>
 
-        <hr class="divider">
+        <hr class="divider" id="contact">
 
-        <section id="contact" class="contact-section" id="contact">
+        <section class="contact-section" id="contact">
             <div class="contact-left-section">
 
                 <h1 class=" contact-title">GET IN TOUCH</h1>
@@ -469,7 +466,7 @@
                     <p>Thank you for your patience!</p>
                 </div>
 
-                <button class="temp-modal-close-btn" onclick="closeModal()">GOT IT!</button>
+                <button class="temp-modal-close-btn" onclick="closeTempModal()">GOT IT!</button>
             </div>
         </div>
     </main>
