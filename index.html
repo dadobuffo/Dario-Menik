@@ -3,19 +3,52 @@
 
 <head>
 
-    <title>Dario Menik</title>
+    <title>Dario Menik | Sound Designer & Audio Engineer</title>
 
     <!-- METADATA -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
 
     <meta name="author" content="Dario Menik">
-    <meta name="description" content="Audio Engineer, Producer, Sound Designer.">
+    <meta name="description"
+        content="Sound Designer and Composer for games and media, audio engineer at Artifacts Recordings.">
+
     <meta name="theme-color" content="#161616">
 
+    <!-- OPEN GRAPH -->
+    <meta property="og:title" content="Dario Menik | Sound Designer & Audio Engineer">
+    <meta property="og:description"
+        content="Sound Designer and Composer for games and media, audio engineer at Artifacts Recordings.">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="https://dariomenik.com/">
+    <meta property="og:type" content="website">
+
+    <!-- TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dario Menik | Sound Designer & Audio Engineer">
+    <meta name="twitter:description"
+        content="Sound Designer and Composer for games and media, audio engineer at Artifacts Recordings.">
+    <meta name="twitter:image" content="">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "Dario Menik",
+          "jobTitle": "Sound Designer, Audio Engineer, Composer",
+          "url": "https://dariomenik.com",
+          "sameAs": [
+            "http://linkedin.com/in/dario-menichetti/",
+            "http://instagram.com/dariomenik_mon/"
+          ]
+        }
+    </script>
+
     <!-- FAVICON -->
-    <link rel="icon" type="image/png" href="icons/favicon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="icons/favicon.png">
+    <link rel="icon" type="image/png" href="assets/icons/fish_logo_red_var.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/fish_logo_red_var.svg">
 
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
@@ -37,18 +70,18 @@
             <img class="logo" src="assets/icons/logo_white.svg">
             <nav>
                 <ul>
-                    <li><a href="#hero">HOME</a></li>
-                    <li><a href="#portfolio">PORTFOLIO</a></li>
+                    <li><a href="#home">HOME</a></li>
                     <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#portfolio">PORTFOLIO</a></li>
                     <li><a href="#contact">CONTACT</a></li>
                 </ul>
             </nav>
         </div>
         <div class="fixed-header">
             <ul>
-                <li><a href="#hero">HOME</a></li>
-                <li><a href="#portfolio">PORTFOLIO</a></li>
+                <li><a href="#home">HOME</a></li>
                 <li><a href="#about">ABOUT</a></li>
+                <li><a href="#portfolio">PORTFOLIO</a></li>
                 <li><a href="#contact">CONTACT</a></li>
             </ul>
         </div>
@@ -58,331 +91,63 @@
 
             <ul class="sidebar">
                 <img class="close-sidebar-button" onclick=hideSidebar() src="assets/icons/close.svg">
-                <li><a href="#hero">HOME</a></li>
-                <li><a href="#portfolio">PORTFOLIO</a></li>
+                <li><a href="#home">HOME</a></li>
                 <li><a href="#about">ABOUT</a></li>
+                <li><a href="#portfolio">PORTFOLIO</a></li>
                 <li><a href="#contact">CONTACT</a></li>
             </ul>
         </div>
     </header>
 
     <main>
-        <section id="hero" class="hero">
-            <div class="hero-content">
-                <h1>SOUND DESIGNER | COMPOSER | AUDIO ENGINEER</h1>
-                <p>I craft immersive audio for games and film — from soundscapes to in-game systems. </p>
-                <a href="#portfolio" class="hero-cta">SEE MY WORK</a>
+        <!-- HOME -->
+
+        <section class="hero-section" id="home">
+            <div class="hero-box">
+                <div class="box-background">
+                    <video loop muted playsinline preload="none" autoplay class="video-stop">
+                        <source src="assets/gifs/prey_gif.webm" type="video/webm">
+                        <source src="assets/gifs/prey_gif.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <h2>| Sound Designer</h2>
+                    <h2>| Audio Engineer</h2>
+                    <h2>| Composer</h2>
+                </div>
+                <div class="hero-reel-button">
+                    <button class="open-modal" data-poster="assets/videos/prey_poster.webp" data-webm=""
+                        data-mp4="assets/videos/prey_video.mp4">
+                        PLAY REEL
+                    </button>
+                </div>
             </div>
+
+            <img src="assets/icons/arrow_down.svg" alt="arrow icon" class="hero-arrow-icon">
         </section>
 
-        <section class="section portfolio-section">
-            <span id="portfolio"></span>
-            <h1 class="section-title"> SELECTED WORKS</h1>
+        <!-- ABOUT -->
 
-            <div class="section-description">
-                <p>
-                    A collection of works I've done over the years, from sound design and original compositions to
-                    fan-made projects I’ve done out of passion.
-                </p>
-                <p>
-                    To see my audio engineer's portfolio, feel free to visit my other site
-                    <a href="https://artifactsrecordings.com" target="_blank" class="site-link">
-                        Artifacts Recordings
-                    </a>.
-                </p>
-            </div>
-
-            <div class="showreel-button">
-                <hr>
-                <button onclick="openModal('showreel')">SHOWREEL</button>
-                <hr>
-            </div>
-
-            <ul class="filters">
-                <li class="current">all</li>
-                <div class="filters-divider hideOnMobile">•</div>
-                <li>game audio</li>
-                <div class="filters-divider hideOnMobile">•</div>
-                <li>linear audio</li>
-                <div class="filters-divider hideOnMobile">•</div>
-                <li>fun projects</li>
-            </ul>
-
-            <div class="grid-container">
-                <a class="grid-element" data-filter="game audio" onclick="openModal('necrologium')">
-                    <video loop muted playsinline preload="none" class="anim-video">
-                        <source src="assets/previews/Necrologium.webm" type="video/webm">
-                        <source src="assets/previews/Necrologium.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="grid-element-text">
-                        <p>Necrologium</p>
-                    </div>
-                </a>
-                <a class="grid-element" data-filter="game audio" onclick="openModal('ammazzacaffè')">
-                    <video loop muted playsinline preload="none" class="anim-video">
-                        <source src="assets/previews/Ammazzacaffè.webm" type="video/webm">
-                        <source src="assets/previews/Ammazzacaffè.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="grid-element-text">
-                        <p>Ammazzacaffè (game jam)</p>
-                    </div>
-                </a>
-                <a class="grid-element" data-filter="linear audio,fun projects" onclick="openModal('prey')">
-                    <video loop muted playsinline preload="none" class="anim-video">
-                        <source src="assets/previews/Prey.webm" type="video/webm">
-                        <source src="assets/previews/Prey.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="grid-element-text">
-                        <p>Prey E3 Trailer (audio replacement)</p>
-                    </div>
-                </a>
-                <!--
-                <a class="grid-element" data-filter="linear audio,fun projects" onclick="openModal('prey')">
-                    <video loop muted playsinline preload="none" class="anim-video">
-                        <source src="assets/previews/Prey.webm" type="video/webm">
-                        <source src="assets/previews/Prey.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="grid-element-text">
-                        <p>Prey E3 Trailer (audio replacement)</p>
-                    </div>
-                </a>
-                <a class="grid-element" data-filter="linear audio,fun projects" onclick="openModal('prey')">
-                    <video loop muted playsinline preload="none" class="anim-video">
-                        <source src="assets/previews/Prey.webm" type="video/webm">
-                        <source src="assets/previews/Prey.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="grid-element-text">
-                        <p>Prey E3 Trailer (audio replacement)</p>
-                    </div>
-                </a>
-                <a class="grid-element" data-filter="linear audio,fun projects" onclick="openModal('prey')">
-                    <video loop muted playsinline preload="none" class="anim-video">
-                        <source src="assets/previews/Prey.webm" type="video/webm">
-                        <source src="assets/previews/Prey.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="grid-element-text">
-                        <p>Prey E3 Trailer (audio replacement)</p>
-                    </div>
-                </a>
-                -->
-            </div>
-
-            <!-- modals -->
-
-            <div id="showreel" class="modal">
-                <div class="modal-container fade-in">
-                    <img class="close-modal-button" onclick="closeModal()" src="assets/icons/close.svg">
-
-                    <div class="modal-left-section">
-                        <video controls preload="none" poster="assets/modal/Prey_preview.png">
-                            <source src="assets/modal/Prey_video.webm" type="video/webm">
-                            <source src="assets/modal/Prey_video.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-
-                    <div class="modal-right-section">
-                        <h2> Sound Design Reel</h2>
-
-                        <div class="modal-description">
-                            <p> A collection of sound design works I've done over the years, including... </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="prey" class="modal">
-                <div class="modal-container fade-in">
-                    <img class="close-modal-button" onclick="closeModal()" src="assets/icons/close.svg">
-
-                    <div class="modal-left-section">
-                        <video controls preload="none" poster="assets/modal/Prey_preview.png">
-                            <source src="assets/modal/Prey_video.webm" type="video/webm">
-                            <source src="assets/modal/Prey_video.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-
-                    <div class="modal-right-section">
-                        <h2>Prey E3 Trailer <span style="font-size: 1.2rem;">(audio replacement)</span></h2>
-
-                        <div class="modal-description">
-                            <p> I completely reimagine the trailer’s audio, replacing all original elements.
-                                This included recording and synthesizing new sound effects for movement, environment,
-                                creatures, weapons, and UI. </p>
-                            <p>I recorded an Italian voice-over for the dialogue and composed new music to enhance the
-                                trailer’s tone and pacing. </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="necrologium" class="modal">
-                <div class="modal-container fade-in">
-                    <img class="close-modal-button" onclick="closeModal()" src="assets/icons/close.svg">
-
-                    <div class="modal-left-section">
-                        <div class="modal-slideshow-container">
-                            <div class="mySlides">
-                                <img src="assets/modal/Necrologium_1.png">
-                                <div class="slide-description">Game Cover</div>
-                            </div>
-
-                            <div class="mySlides">
-                                <img src="assets/modal/Necrologium_2.jpg">
-                                <div class="slide-description">FMOD Project</div>
-                            </div>
-
-                            <div class="mySlides">
-                                <img src="assets/modal/Necrologium_3.jpg">
-                                <div class="slide-description">FMOD Project</div>
-                            </div>
-
-                            <img class="prev-button" onclick="plusSlides(-1)" src="assets/icons/arrow_left.svg">
-                            <img class="next-button" onclick="plusSlides(1)" src="assets/icons/arrow_right.svg">
-                        </div>
-                        <br>
-
-                        <div style="text-align:center">
-                            <span class="dot" onclick="currentSlide(1)"></span>
-                            <span class="dot" onclick="currentSlide(2)"></span>
-                            <span class="dot" onclick="currentSlide(3)"></span>
-                        </div>
-                    </div>
-
-                    <div class="modal-right-section">
-                        <h2>Necrologium</span></h2>
-
-                        <div class="modal-description">
-                            <p>
-                                <i>Necrologium</i> is an investigative point-and-click game set in the 19th
-                                century.
-                            </p>
-                            <p>
-                                I worked on the project as the lead sound designer and composer, taking an active role
-                                in shaping the game's overall soundscape.
-                                I was responsible for key artistic decisions regarding the audio direction, developed
-                                through close collaboration with the team and in alignment with the game's creative
-                                vision.
-                            </p>
-                            <p>
-                                My workflow involved <i>FMOD</i>, <i>Unity</i>, and <i>Nuendo</i>, enabling seamless
-                                integration of dynamic
-                                and interactive audio elements.
-                                I recorded, edited, and implemented a wide range of custom sound effects — many designed
-                                to respond in real time to gameplay actions and player interactions.
-                            </p>
-                        </div>
-
-                        <div class="modal-links">
-                            <hr>
-                            <div class="modal-links-container">
-
-                                <a href="https://store.steampowered.com/app/3448870/Necrologium/" target="_blank">
-                                    <img class="modal-link-icon" src="assets/icons/socials/steam.svg" alt="Steam link">
-                                </a>
-                                <a href="https://bobscult.com/" target="_blank">
-                                    <img class="modal-link-icon" src="assets/icons/socials/web.svg" alt="Website link">
-                                </a>
-                                <a href="https://www.instagram.com/bobscult_team/" target="_blank">
-                                    <img class="modal-link-icon" src="assets/icons/socials/instagram.svg"
-                                        alt="Instagram link">
-                                </a>
-                            </div>
-                            <hr>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="ammazzacaffè" class="modal">
-                <div class="modal-container fade-in">
-                    <img class="close-modal-button" onclick="closeModal()" src="assets/icons/close.svg">
-
-                    <div class="modal-left-section">
-                        <div class="modal-slideshow-container">
-
-                            <div class="mySlides">
-                                <img src="assets/modal/Ammazzacaffé_1.jpg">
-                                <div class="slide-description">Game Cover</div>
-                            </div>
-
-                            <div class="mySlides">
-                                <img src="assets/modal/Ammazzacaffé_FMOD.jpg">
-                                <div class="slide-description">FMOD Project</div>
-                            </div>
-
-                            <div class="mySlides">
-                                <img src="assets/modal/Ammazzacaffé_Unity.jpg">
-                                <div class="slide-description">Unity audio implementation</div>
-                            </div>
-
-                            <img class="prev-button" onclick="plusSlides(-1)" src="assets/icons/arrow_left.svg">
-                            <img class="next-button" onclick="plusSlides(1)" src="assets/icons/arrow_right.svg">
-                        </div>
-                        <br>
-
-                        <div style="text-align:center">
-                            <span class="dot" onclick="currentSlide(1)"></span>
-                            <span class="dot" onclick="currentSlide(2)"></span>
-                            <span class="dot" onclick="currentSlide(3)"></span>
-                        </div>
-                    </div>
-
-                    <div class="modal-right-section">
-                        <h2>Ammazzacaffè <span style="font-size: 1.2rem;">(game jam)</span></h2>
-
-                        <div class="modal-description">
-                            <p>I composed the game's musical themes and designed the soundscape, recording most
-                                sound effects from scratch.</p>
-                            <p>This included gibberish vocals for all characters, ambient layers, UI feedback, character
-                                actions, and interactive audio elements.</p>
-                            <p>I implemented everything in Unity using custom scripts and audio managers to ensure
-                                responsive integration with gameplay systems.</p>
-                        </div>
-
-                        <div class="modal-links">
-                            <hr>
-                            <div class="modal-links-container">
-                                <a href="https://callisto-gaming.itch.io/ammazzacaffe" target="_blank">
-                                    <img class="modal-link-icon" src="assets/icons/socials/itch.svg" alt="Itch link">
-                                </a>
-                            </div>
-                            <hr>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <hr class="divider" id="about">
-
-        </section>
-
-        <section class="about-section">
+        <section class="about-section" id="about">
 
             <div class="about-container">
                 <div class="about-left-section">
-                    <img src="assets/images/temp.png" alt="Dario Menik">
+                    <img src="assets/images/propic_1.webp" alt="Dario Menik">
                 </div>
 
                 <div class="about-right-section">
                     <div class="about-title">ABOUT ME</div>
 
                     <div class="about-text">
-                        <p style="font-size: 1.3rem;">
-                            I'm Dario Menichetti and I’m a sound designer and audio engineer.
+                        <p class="about-text-big">
+                            I'm Dario Menichetti, sound designer and audio engineer.
                         </p>
                         <p>
                             What started as a passion, in 2020 became <a href="https://artifactsrecordings.com"
                                 target="_blank" class="site-link">
-                                Artifacts Recordings
-                            </a>, a post-production studio
+                                Artifacts Recordings</a>, a post-production studio
                             where I
                             work with artists to turn their ideas into polished songs through recording, mixing
                             and music production.
@@ -390,9 +155,11 @@
 
                         <p>
                             In the past few years, I began my journey into game audio, working with indie teams as a
-                            composer and sound designer. I developed a passion for interactive audio, I started studying
+                            composer and sound designer. I developed a passion for interactive audio, I started
+                            studying
                             and
-                            working with audio middleware and game engines, trying to implement audio through scripting
+                            working with audio middleware and game engines, trying to implement audio through
+                            scripting
                             and
                             coding.
                         </p>
@@ -409,10 +176,135 @@
                 </div>
             </div>
 
-            <div class="programs-container">
-                <div class="programs-text">
+            <div class="showreel-button">
+                <hr>
+                <button class="open-modal" data-poster="assets/videos/prey_poster.webp" data-webm=""
+                    data-mp4="assets/videos/prey_video.mp4">
+                    SHOWREEL
+                </button>
+                <hr>
+            </div>
+        </section>
 
+        <!-- PORTFOLIO -->
+
+        <section class="portfolio-section" id="portfolio">
+            <div class="credits-section">
+                <h2 class="section-title">Game Credits</h2>
+                <p class="section-subtitle">Games I sound designed and composed</p>
+
+                <div class="credits-grid">
+                    <div class="credits-grid-element">
+                        <div class="box-background">
+                            <img src="assets/images/gardenia_box.webp" alt="">
+                        </div>
+                        <div class="credits-overlay"></div>
+                        <div class="box-content">
+                            <h3 class="coming-soon">Coming Soon</h3>
+                        </div>
+                    </div>
+                    <a href="https://store.steampowered.com/app/3448870/Necrologium" target="_blank">
+                        <div class="credits-grid-element">
+                            <div class="box-background">
+                                <img src="assets/images/necrologium_box.webp" alt="">
+                            </div>
+                            <div class="credits-overlay"></div>
+                            <div class="box-content">
+                                <div class="box-text credits-text">
+                                    <h3 class="box-title">Necrologium</h3>
+                                    <p class="box-description">Sound Designer, Composer</p>
+                                </div>
+                                <div class="arrow-right">
+                                    <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty">
+                                    <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full">
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://callisto-gaming.itch.io/ammazzacaffe" target="_blank">
+                        <div class="credits-grid-element">
+                            <div class="box-background">
+                                <img src="assets/images/ammazzacaffé_box.webp" alt="">
+                            </div>
+                            <div class="box-overlay"></div>
+                            <div class="box-content">
+                                <div class="box-text credits-text">
+                                    <h3 class="box-title">Ammazzacaffé</h3>
+                                    <p class="box-description">Sound Designer, Composer, Audio Programmer</p>
+                                </div>
+                                <div class="arrow-right">
+                                    <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty">
+                                    <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full">
+                                </div>
+                            </div>
+                        </div>
+                    </a>
                 </div>
+            </div>
+
+            <hr class="divider">
+
+            <div class="implementation-section">
+                <h2 class="section-title">Audio Implementation</h2>
+                <p class="section-subtitle">Examples of audio implementation through middleware and game engines</p>
+
+                <div class="implementation-grid">
+                    <div class="implementation-grid-element open-modal" data-poster="assets/videos/prey_poster.webp"
+                        data-webm="" data-mp4="assets/videos/prey_video.mp4">
+                        <div class="box-background">
+                            <img src="assets/test/1.png" alt="">
+                        </div>
+                        <div class="box-overlay"></div>
+                        <div class="box-content">
+                            <div class="box-text implementation-text">
+                                <h3 class="box-title">FMOD Implementation</h3>
+                                <p class="box-description">Ho fatto cose buffe su FMOD ho fatto cose buffe su FMOD ho
+                                    fatto cose buffe su FMOD</p>
+                            </div>
+                            <div class="arrow-right">
+                                <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty">
+                                <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="implementation-grid-element open-modal" data-poster="assets/videos/prey_poster.webp"
+                        data-webm="" data-mp4="assets/videos/prey_video.mp4">
+                        <div class="box-background">
+                            <img src="assets/test/2.png" alt="">
+                        </div>
+                        <div class="box-overlay"></div>
+                        <div class="box-content">
+                            <div class="box-text implementation-text">
+                                <h3 class="box-title">Wwise Implementation</h3>
+                                <p class="box-description">Ho fatto cose buffe su Wwise ho fatto cose buffe su Wwise ho
+                                    fatto cose buffe su Wwise</p>
+                            </div>
+                            <div class="arrow-right">
+                                <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty">
+                                <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="implementation-grid-element open-modal" data-poster="assets/videos/prey_poster.webp"
+                        data-webm="" data-mp4="assets/videos/prey_video.mp4">
+                        <div class="box-background">
+                            <img src="assets/test/3.png" alt="">
+                        </div>
+                        <div class="box-overlay"></div>
+                        <div class="box-content">
+                            <div class="box-text implementation-text">
+                                <h3 class="box-title">Unity Implementation</h3>
+                                <p class="box-description">Ho fatto cose buffe su Unity ho fatto cose buffe su Unity ho
+                                    fatto cose buffe su Unity</p>
+                            </div>
+                            <div class="arrow-right">
+                                <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty">
+                                <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="programs-icon-container">
                     <img src="assets/icons/programs/UnrealEngine_white.svg" class="program-icon">
                     <img src="assets/icons/programs/Unity_white.svg" class="program-icon">
@@ -421,54 +313,136 @@
                 </div>
             </div>
 
+            <hr class="divider">
 
+            <div class="redesign-section">
+                <h2 class="section-title">Linear Redesign</h2>
+                <p class="section-subtitle">A collection of linear audio redesign I've done over the years</p>
+
+                <div class="redesign-grid">
+                    <div class="redesign-grid-element open-modal" data-poster="assets/videos/prey_poster.webp"
+                        data-webm="" data-mp4="assets/videos/prey_video.mp4">
+                        <div class="box-background">
+                            <img src="assets/test/4.png" alt="">
+                        </div>
+                        <div class="box-overlay"></div>
+                        <div class="box-content">
+                            <div class="box-text redesign-text">
+                                <h3 class="box-title">Weapons Redesign Reel</h3>
+                                <p class="box-description">Linear Audio Redesign di vari scenari con armi pium pium</p>
+                            </div>
+                            <div class="arrow-right">
+                                <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty">
+                                <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="redesign-grid-element open-modal" data-poster="assets/videos/prey_poster.webp"
+                        data-webm="" data-mp4="assets/videos/prey_video.mp4">
+                        <div class="box-background">
+                            <video loop muted playsinline preload="none" autoplay class="video-stop">
+                                <source src="assets/gifs/prey_gif.webm" type="video/webm">
+                                <source src="assets/gifs/prey_gif.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="box-overlay"></div>
+                        <div class="box-content">
+                            <div class="box-text redesign-text">
+                                <h3 class="box-title">Prey | E3 Trailer</h3>
+                                <p class="box-description">Linear audio redesign of the Prey trailer with fully
+                                    reimagined SFX, Italian VO, and new music</p>
+                            </div>
+                            <div class="arrow-right">
+                                <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty">
+                                <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="redesign-grid-element open-modal" data-poster="assets/videos/prey_poster.webp"
+                        data-webm="" data-mp4="assets/videos/prey_video.mp4">
+                        <div class="box-background">
+                            <img src="assets/test/6.png" alt="">
+                        </div>
+                        <div class="box-overlay"></div>
+                        <div class="box-content">
+                            <div class="box-text redesign-text">
+                                <h3 class="box-title">Intergalactic | Trailer </h3>
+                                <p class="box-description">Linear Audio Redesign del trailer di Intergalactic</p>
+                            </div>
+                            <div class="arrow-right">
+                                <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty">
+                                <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="redesign-grid-element open-modal" data-poster="assets/videos/prey_poster.webp"
+                        data-webm="" data-mp4="assets/videos/prey_video.mp4">
+                        <div class="box-background">
+                            <img src="assets/test/7.png" alt="">
+                        </div>
+                        <div class="box-overlay"></div>
+                        <div class="box-content">
+                            <div class="box-text redesign-text">
+                                <h3 class="box-title">Altro </h3>
+                                <p class="box-description">Boh sicuramente ci metterò altro per ora ci metto solo un bel
+                                    po' di testo almeno controllo se funziona bene</p>
+                            </div>
+                            <div class="arrow-right">
+                                <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty">
+                                <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <hr class="divider" id="contact">
+        <!-- CREDITS -->
 
         <section class="contact-section" id="contact">
-            <div class="contact-left-section">
+            <div class="contact-container">
+                <div class="contact-left-section">
 
-                <h1 class=" contact-title">GET IN TOUCH</h1>
-                <div class="contact-description">
-                    <p>Interested in working together?</p>
-                    <p> Drop me an email or fill the form below ~ </p>
+                    <h1 class=" contact-title">GET IN TOUCH</h1>
+                    <div class="contact-description">
+                        <p>Interested in working together?</p>
+                        <p> Drop me an email or fill the form below ~ </p>
+                    </div>
+                    <div class="contact-mail">
+                        <a href="mailto:dariomenik@gmail.com"> dariomenik@gmail.com </a>
+                    </div>
                 </div>
-                <div class="contact-mail">
-                    <a href="mailto:dariomenik@gmail.com"> dariomenik@gmail.com </a>
+                <div class="contact-right-section">
+                    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+
+                        <input type="hidden" name="access_key" value="4c5c682c-ebd8-4920-be9d-38d34ea3ecfb">
+                        <input type="hidden" name="redirect" value="https://dariomenik.com/thanks.html">
+                        <input type="hidden" name="replyto" value="email">
+                        <input type="hidden" name="from_name" value="dariomenik.com">
+
+                        <input class="contact-form-box" type="text" name="name" placeholder="your name &ast;" required>
+                        <input class="contact-form-box" type="email" name="email" placeholder="email &ast;" required>
+                        <textarea class=" contact-form-textarea" name="message" rows="5" placeholder="message &ast;"
+                            required></textarea>
+                        <button class="contact-form-submit-button" type="submit">SUBMIT</button>
+
+                    </form>
                 </div>
-            </div>
-            <div class="contact-right-section">
-                <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
-
-                    <input type="hidden" name="access_key" value="4c5c682c-ebd8-4920-be9d-38d34ea3ecfb">
-                    <input type="hidden" name="redirect" value="https://dariomenik.com/thanks.html">
-                    <input type="hidden" name="replyto" value="email">
-                    <input type="hidden" name="from_name" value="dariomenik.com">
-
-                    <input class="contact-form-box" type="text" name="name" placeholder="your name &ast;" required>
-                    <input class="contact-form-box" type="email" name="email" placeholder="email &ast;" required>
-                    <textarea class=" contact-form-textarea" name="message" rows="5" placeholder="message &ast;"
-                        required></textarea>
-                    <button class="contact-form-submit-button" type="submit">SUBMIT</button>
-
-                </form>
             </div>
         </section>
 
-        <div id="temp-modal" class="temp-modal-overlay">
-            <div class="temp-modal-content">
-                <h2>🚧 Website Under Construction 🚧</h2>
-
-                <div class="temp-modal-text">
-                    <p>I'm re-working some parts of the website. You might find incomplete sections or features in
-                        development. </p>
-                    <p>Thank you for your patience!</p>
-                </div>
-
-                <button class="temp-modal-close-btn" onclick="closeTempModal()">GOT IT!</button>
-            </div>
-        </div>
+        <dialog class="modal" id="videoModal">
+            <video controls preload="none">
+                <source id="videoSourceWebm" type="video/webm">
+                <source id="videoSourceMp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <img class="close-modal-button close-modal" src="assets/icons/close.svg">
+        </dialog>
     </main>
 
     <footer>
@@ -482,12 +456,14 @@
                 <a href="http://linkedin.com/in/dario-menichetti/" target="_blank">
                     <img class="socials-icon" src="assets/icons/socials/linkedin.svg" alt="Follow me on LinkedIn">
                 </a>
+                <!-- 
                 <a href="http://spotify.com/" target="_blank">
                     <img class="socials-icon" src="assets/icons/socials/spotify.svg" alt="Follow me on Spotify">
                 </a>
                 <a href="http://youtube.com/" target="_blank">
                     <img class="socials-icon" src="assets/icons/socials/youtube.svg" alt="Follow me on YouTube">
                 </a>
+                -->
                 <a href="http://instagram.com/dariomenik_mon/" target="_blank">
                     <img class="socials-icon" src="assets/icons/socials/instagram.svg" alt="Follow me on Instagram">
                 </a>

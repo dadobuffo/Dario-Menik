@@ -1,4 +1,4 @@
-// header
+// HEADER
 
 function showSidebar() {
   const sidebar = document.querySelector(".sidebar");
@@ -26,165 +26,88 @@ window.addEventListener("scroll", updateHeaderVisibility);
 
 updateHeaderVisibility();
 
-// filter
+// ARROW ICON
 
-document.addEventListener("DOMContentLoaded", function () {
-  const filterButtons = document.querySelectorAll(".filters li");
-  const gridElements = document.querySelectorAll(
-    ".grid-container .grid-element"
-  );
+document.querySelector(".hero-arrow-icon").addEventListener("click", (e) => {
+  e.preventDefault();
+  const target = document.querySelector("#about");
+  if (target) {
+    const offset = 0;
+    const top = target.getBoundingClientRect().top + window.scrollY + offset;
 
-  filterButtons.forEach((button) => {
-    button.addEventListener("click", function () {
-      filterButtons.forEach((el) => el.classList.remove("current"));
-      button.classList.add("current");
-
-      const filterValue = button.textContent.trim();
-
-      gridElements.forEach((element) => {
-        const filters = element
-          .getAttribute("data-filter")
-          .split(",")
-          .map((f) => f.trim());
-
-        if (filterValue === "all" || filters.some((f) => f === filterValue)) {
-          element.classList.remove("hidden");
-        } else {
-          element.classList.add("hidden");
-        }
-      });
+    window.scrollTo({
+      top: top,
+      behavior: "smooth",
     });
+  }
+});
+
+// MODALS
+
+const openButtons = document.querySelectorAll(".open-modal");
+const modal = document.getElementById("videoModal");
+const video = modal.querySelector("video");
+const sourceWebm = document.getElementById("videoSourceWebm");
+const sourceMp4 = document.getElementById("videoSourceMp4");
+
+openButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    video.poster = btn.dataset.poster;
+    sourceWebm.src = btn.dataset.webm;
+    sourceMp4.src = btn.dataset.mp4;
+
+    video.load();
+
+    modal.showModal();
+    requestAnimationFrame(() => modal.classList.add("show"));
+    disableScroll();
   });
 });
 
-// modal
+modal.querySelector(".close-modal").addEventListener("click", () => {
+  closeModal(modal);
+});
 
-let currentModal = null;
-let slideIndex = 1;
-
-function openModal(modalId) {
-  const modal = document.getElementById(modalId);
-
-  if (modal) {
-    if (currentModal) closeModal();
-
-    modal.style.display = "flex";
-    modal.classList.add("active");
-    document.body.style.overflow = "hidden";
-    currentModal = modal;
-
-    slideIndex = 1;
-    showSlides(slideIndex);
-
-    const slideContainer =
-      modal.querySelector(".modal-slideshow-container") || modal;
-    slideContainer.addEventListener("touchstart", handleTouchStart, {
-      passive: true,
-    });
-    slideContainer.addEventListener("touchend", handleTouchEnd, {
-      passive: true,
-    });
+modal.addEventListener("click", (e) => {
+  const dialogDimensions = modal.getBoundingClientRect();
+  if (
+    e.clientX < dialogDimensions.left ||
+    e.clientX > dialogDimensions.right ||
+    e.clientY < dialogDimensions.top ||
+    e.clientY > dialogDimensions.bottom
+  ) {
+    closeModal(modal);
   }
+});
+
+modal.addEventListener("cancel", (e) => {
+  e.preventDefault();
+  closeModal(modal);
+});
+
+function closeModal(modal) {
+  video.pause();
+  modal.classList.remove("show");
+  enableScroll();
+  modal.close();
 }
 
-function closeModal() {
-  if (!currentModal) return;
+function disableScroll() {
+  document.body.style.overflow = "hidden";
+}
 
-  const slideContainer =
-    currentModal.querySelector(".modal-slideshow-container") || currentModal;
-  slideContainer.removeEventListener("touchstart", handleTouchStart);
-  slideContainer.removeEventListener("touchend", handleTouchEnd);
-
-  currentModal.style.display = "none";
-  currentModal.classList.remove("active");
+function enableScroll() {
   document.body.style.overflow = "";
-
-  stopVideo(currentModal);
-  currentModal = null;
 }
 
-function plusSlides(n) {
-  showSlides((slideIndex += n));
-}
+// GIF PAUSE
 
-function currentSlide(n) {
-  showSlides((slideIndex = n));
-}
-
-function showSlides(n) {
-  const activeModal = document.querySelector(".modal.active");
-  if (!activeModal) return;
-
-  const slides = activeModal.querySelectorAll(".mySlides");
-  const dots = activeModal.querySelectorAll(".dot");
-
-  if (slides.length === 0) return;
-
-  stopVideo(activeModal);
-
-  if (n > slides.length) {
-    slideIndex = 1;
-  }
-  if (n < 1) {
-    slideIndex = slides.length;
-  }
-
-  slides.forEach((slide) => {
-    slide.style.display = "none";
-  });
-
-  dots.forEach((dot) => {
-    dot.classList.remove("active");
-  });
-
-  slides[slideIndex - 1].style.display = "block";
-  if (dots[slideIndex - 1]) {
-    dots[slideIndex - 1].classList.add("active");
-  }
-}
-let touchStartX = 0;
-let touchEndX = 0;
-
-function handleTouchStart(event) {
-  touchStartX = event.changedTouches[0].screenX;
-}
-
-function handleTouchEnd(event) {
-  touchEndX = event.changedTouches[0].screenX;
-  handleGesture();
-}
-
-function handleGesture() {
-  const swipeThreshold = 50;
-
-  if (touchEndX < touchStartX - swipeThreshold) {
-    plusSlides(1);
-  } else if (touchEndX > touchStartX + swipeThreshold) {
-    plusSlides(-1);
-  }
-}
-
-window.addEventListener("click", function (event) {
-  if (currentModal && event.target === currentModal) {
-    closeModal();
-  }
-});
-
-function stopVideo(modal) {
-  const videos = modal.querySelectorAll("video");
-  videos.forEach((video) => {
-    video.pause();
-  });
-}
-
-// pause videos when not in view
-
-const videos = document.querySelectorAll(".anim-video");
+const videos = document.querySelectorAll(".video-stop");
 
 const options = {
   root: null,
   rootMargin: "0px",
-  threshold: 0.5,
+  threshold: 0.1,
 };
 
 const callback = (entries) => {
@@ -202,20 +125,4 @@ const observer = new IntersectionObserver(callback, options);
 
 videos.forEach((video) => {
   observer.observe(video);
-});
-
-// temporary modal
-
-window.onload = function () {
-  document.getElementById("temp-modal").style.display = "flex";
-};
-
-function closeTempModal() {
-  document.getElementById("temp-modal").style.display = "none";
-}
-
-document.getElementById("temp-modal").addEventListener("click", function (e) {
-  if (e.target === this) {
-    closeTempModal();
-  }
 });
