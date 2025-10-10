@@ -137,8 +137,7 @@ header {
 }
 
 .absolute-header .logo {
-  height: 40px;
-  filter: invert(1);
+  height: 45px;
 }
 
 .absolute-header ul {
@@ -199,7 +198,6 @@ header {
   left: 50%;
   transform: translate(-50%, 0);
   height: 40px;
-  filter: invert(1);
 }
 
 .open-sidebar-button {
