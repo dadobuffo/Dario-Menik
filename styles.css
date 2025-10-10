@@ -617,13 +617,7 @@ header {
   white-space: nowrap;
 }
 
-.credits-text {
-}
-
 /* AUDIO IMPLEMENTATION */
-
-.implementation-section {
-}
 
 .implementation-grid {
   width: 100%;
@@ -650,9 +644,6 @@ header {
   box-shadow: var(--box-shadow-2);
 }
 
-.implementation-text {
-}
-
 .programs-icon-container {
   display: flex;
   flex-direction: row;
@@ -677,9 +668,6 @@ header {
 }
 
 /* SOUND REDESIGN */
-
-.redesign-section {
-}
 
 .redesign-grid {
   width: 100%;
@@ -709,12 +697,6 @@ header {
 .redesign-grid-element:first-child {
   grid-column: 1 / -1;
   height: 480px;
-}
-
-.redesign-text {
-}
-
-.redesign-grid-element:first-child .redesign-text {
 }
 
 /* #endregion */
@@ -808,12 +790,6 @@ header {
 
 .contact-description {
   margin: 2rem 0;
-}
-
-.contact-mail {
-}
-
-.contact-right-section {
 }
 
 .contact-form {
