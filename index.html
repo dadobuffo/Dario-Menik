@@ -9,11 +9,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
-
     <meta name="author" content="Dario Menik">
     <meta name="description"
         content="Sound Designer and Composer for games and media, audio engineer at Artifacts Recordings.">
-
     <meta name="theme-color" content="#161616">
 
     <!-- OPEN GRAPH -->
@@ -33,17 +31,69 @@
 
     <!-- JSON-LD -->
     <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Dario Menik",
+      "alternateName": "Dario Menichetti",
+      "jobTitle": "Sound Designer, Audio Engineer, Composer",
+      "description": "Sound Designer and Composer for games and media, audio engineer at Artifacts Recordings.",
+      "image": "https://dariomenik.com/assets/images/dario-menik.webp",
+      "url": "https://dariomenik.com",
+      "sameAs": [
+        "https://linkedin.com/in/dario-menichetti/",
+        "https://instagram.com/dariomenik_mon/",
+        "https://www.facebook.com/dario.menik/"
+      ],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Artifacts Recordings",
+        "url": "https://artifactsrecordings.com",
+        "description": "Professional recording and audio production studio offering high-quality mixing and mastering services."
+      },
+      "knowsAbout": [
+        "Sound Design",
+        "Audio Post-Production",
+        "Audio Mixing",
+        "Game Audio",
+        "FMOD",
+        "Wwise",
+        "Unity",
+        "Nuendo",
+        "Cubase"
+      ],
+      "keywords": "sound designer, audio engineer, game audio, fmod, wwise, unity, mixing, mastering, post production, indie games",
+      "workExample": [
         {
-          "@context": "https://schema.org",
-          "@type": "Person",
-          "name": "Dario Menik",
-          "jobTitle": "Sound Designer, Audio Engineer, Composer",
-          "url": "https://dariomenik.com",
-          "sameAs": [
-            "http://linkedin.com/in/dario-menichetti/",
-            "http://instagram.com/dariomenik_mon/"
-          ]
+          "@type": "VideoGame",
+          "name": "Necrologium",
+          "url": "https://store.steampowered.com/app/3448870/Necrologium",
+          "description": "Sound design and original music composition for the indie title 'Necrologium'. Created and recorded custom sound assets and prepared them for integration using FMOD.",
+          "datePublished": "2025-09-30",
+          "creator": {
+            "@type": "Organization",
+            "name": "Bob's Cult Studio"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Ovid Works"
+          },
+          "genre": "Indie Game"
+        },
+        {
+          "@type": "VideoGame",
+          "name": "Ammazzacaffé",
+          "url": "https://callisto-gaming.itch.io/ammazzacaffe",
+          "description": "Sound design, music composition, and audio implementation using Unity and FMOD for an indie game developed during the SPAGHETTI INVASION GAME JAM 2025.",
+          "datePublished": "2025-04-16",
+          "creator": {
+            "@type": "Organization",
+            "name": "Callisto Gaming"
+          },
+          "genre": "Indie Game"
         }
+      ]
+    }
     </script>
 
     <!-- FAVICON -->
@@ -70,7 +120,7 @@
 <body>
     <header>
         <div class="absolute-header">
-            <img class="logo" src="assets/icons/logo_black.svg">
+            <img class="logo" src="assets/icons/logo_black.svg" alt="Dario Menik Logo">
             <nav>
                 <ul>
                     <li><a href="#home">HOME</a></li>
@@ -89,11 +139,11 @@
             </ul>
         </div>
         <div class="sidebar-header">
-            <img class="logo" src="assets/icons/logo_black.svg">
-            <img class="open-sidebar-button" onclick=showSidebar() src="assets/icons/menu.svg">
+            <img class="logo" src="assets/icons/logo_black.svg" alt="Dario Menik logo">
+            <img class="open-sidebar-button" onclick=showSidebar() src="assets/icons/menu.svg" alt="Open menu">
 
             <ul class="sidebar">
-                <img class="close-sidebar-button" onclick=hideSidebar() src="assets/icons/close.svg">
+                <img class="close-sidebar-button" onclick=hideSidebar() src="assets/icons/close.svg" alt="Close menu">
                 <li><a href="#home">HOME</a></li>
                 <li><a href="#about">ABOUT</a></li>
                 <li><a href="#portfolio">PORTFOLIO</a></li>
@@ -128,7 +178,7 @@
                 </div>
             </div>
 
-            <img src="assets/icons/arrow_down.svg" alt="arrow icon" class="hero-arrow-icon">
+            <img src="assets/icons/arrow_down.svg" alt="" class="hero-arrow-icon">
         </section>
 
         <!-- ABOUT -->
@@ -137,7 +187,7 @@
 
             <div class="about-container">
                 <div class="about-left-section">
-                    <img src="assets/images/propic_1.webp" alt="Dario Menik">
+                    <img src="assets/images/dario-menik.webp" alt="Dario Menik photo">
                 </div>
 
                 <div class="about-right-section">
@@ -149,27 +199,20 @@
                         </p>
                         <p>
                             What started as a passion, in 2020 became <a href="https://artifactsrecordings.com"
-                                target="_blank" class="site-link">
-                                Artifacts Recordings</a>, a post-production studio
-                            where I
-                            work with artists to turn their ideas into polished songs through recording, mixing
+                                target="_blank" class="site-link"> Artifacts Recordings</a>, a post-production studio
+                            where I work with artists to turn their ideas into polished songs through recording, mixing
                             and music production.
                         </p>
 
                         <p>
                             In the past few years, I began my journey into game audio, working with indie teams as a
-                            composer and sound designer. I developed a passion for interactive audio, I started
-                            studying
-                            and
-                            working with audio middleware and game engines, trying to implement audio through
-                            scripting
-                            and
-                            coding.
+                            composer and sound designer. I developed a passion for interactive audio, I started studying
+                            and working with audio middleware and game engines, trying to implement audio through
+                            scripting and coding.
                         </p>
                         <p>
                             With a BA in Music Production, whether it's sculpting sounds for a game or fine-tuning a
-                            mix, I
-                            always try to use my technical background in an original and creative way.
+                            mix, I always try to use my technical background in an original and creative way.
                         </p>
                         <p>
                             Let's create something together!
@@ -199,7 +242,7 @@
                 <div class="credits-grid">
                     <div class="credits-grid-element">
                         <div class="box-background">
-                            <img src="assets/images/gardenia_box.webp" alt="">
+                            <img src="assets/images/gardenia_box.webp" alt="Gardenia's Road">
                         </div>
                         <div class="credits-overlay"></div>
                         <div class="box-content">
@@ -209,7 +252,7 @@
                     <a href="https://store.steampowered.com/app/3448870/Necrologium" target="_blank">
                         <div class="credits-grid-element">
                             <div class="box-background">
-                                <img src="assets/images/necrologium_box.webp" alt="">
+                                <img src="assets/images/necrologium_box.webp" alt="Necrologium">
                             </div>
                             <div class="credits-overlay"></div>
                             <div class="box-content">
@@ -218,8 +261,8 @@
                                     <p class="box-description">Sound Designer, Composer</p>
                                 </div>
                                 <div class="arrow-right">
-                                    <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty">
-                                    <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full">
+                                    <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty" alt="">
+                                    <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full" alt="">
                                 </div>
                             </div>
                         </div>
@@ -227,7 +270,7 @@
                     <a href="https://callisto-gaming.itch.io/ammazzacaffe" target="_blank">
                         <div class="credits-grid-element">
                             <div class="box-background">
-                                <img src="assets/images/ammazzacaffé_box.webp" alt="">
+                                <img src="assets/images/ammazzacaffé_box.webp" alt="Ammazzacaffé">
                             </div>
                             <div class="box-overlay"></div>
                             <div class="box-content">
@@ -236,8 +279,8 @@
                                     <p class="box-description">Sound Designer, Composer, Audio Programmer</p>
                                 </div>
                                 <div class="arrow-right">
-                                    <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty">
-                                    <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full">
+                                    <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty" alt="">
+                                    <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full" alt="">
                                 </div>
                             </div>
                         </div>
@@ -265,8 +308,8 @@
                                     fatto cose buffe su FMOD</p>
                             </div>
                             <div class="arrow-right">
-                                <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty">
-                                <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full">
+                                <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty" alt="">
+                                <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full" alt="">
                             </div>
                         </div>
                     </div>
@@ -283,8 +326,8 @@
                                     fatto cose buffe su Wwise</p>
                             </div>
                             <div class="arrow-right">
-                                <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty">
-                                <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full">
+                                <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty" alt="">
+                                <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full" alt="">
                             </div>
                         </div>
                     </div>
@@ -301,18 +344,19 @@
                                     fatto cose buffe su Unity</p>
                             </div>
                             <div class="arrow-right">
-                                <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty">
-                                <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full">
+                                <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty" alt="">
+                                <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full" alt="">
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="programs-icon-container">
-                    <img src="assets/icons/programs/UnrealEngine_white.svg" class="program-icon">
-                    <img src="assets/icons/programs/Unity_white.svg" class="program-icon">
-                    <img src="assets/icons/programs/FMOD_white.svg" class="program-icon">
-                    <img src="assets/icons/programs/Wwise_white.svg" class="program-icon">
+                    <img src="assets/icons/programs/UnrealEngine_white.svg" class="program-icon"
+                        alt="Unreal Engine logo">
+                    <img src="assets/icons/programs/Unity_white.svg" class="program-icon" alt="Unity logo">
+                    <img src="assets/icons/programs/FMOD_white.svg" class="program-icon" alt="FMOD logo">
+                    <img src="assets/icons/programs/Wwise_white.svg" class="program-icon" alt="Wwise logo">
                 </div>
             </div>
 
@@ -335,8 +379,8 @@
                                 <p class="box-description">Linear Audio Redesign di vari scenari con armi pium pium</p>
                             </div>
                             <div class="arrow-right">
-                                <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty">
-                                <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full">
+                                <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty" alt="">
+                                <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full" alt="">
                             </div>
                         </div>
                     </div>
@@ -358,8 +402,8 @@
                                     reimagined SFX, Italian VO, and new music</p>
                             </div>
                             <div class="arrow-right">
-                                <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty">
-                                <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full">
+                                <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty" alt="">
+                                <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full" alt="">
                             </div>
                         </div>
                     </div>
@@ -376,8 +420,8 @@
                                 <p class="box-description">Linear Audio Redesign del trailer di Intergalactic</p>
                             </div>
                             <div class="arrow-right">
-                                <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty">
-                                <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full">
+                                <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty" alt="">
+                                <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full" alt="">
                             </div>
                         </div>
                     </div>
@@ -395,8 +439,8 @@
                                     po' di testo almeno controllo se funziona bene</p>
                             </div>
                             <div class="arrow-right">
-                                <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty">
-                                <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full">
+                                <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty" alt="">
+                                <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full" alt="">
                             </div>
                         </div>
                     </div>
@@ -453,7 +497,7 @@
             <a class="footer-mail" href="mailto:dariomenik@gmail.com"> dariomenik@gmail.com </a>
             <p class="hideOnMobile">·</p>
             <div class="footer-social">
-                <a href="https://wa.me/393883917855" target="_blank">
+                <a href="https://wa.me/+393883917855" target="_blank">
                     <img class="socials-icon" src="assets/icons/socials/whatsapp.svg" alt="Contact me on WhatsApp">
                 </a>
                 <a href="http://linkedin.com/in/dario-menichetti/" target="_blank">
