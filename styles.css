@@ -1213,3 +1213,10 @@ footer .hideOnMobile {
 }
 
 /* #endregion */
+
+iframe {
+  height: 400px;
+  max-width: 800px;
+  display: block;
+  margin: 0 auto;
+}
