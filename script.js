@@ -126,3 +126,18 @@ const observer = new IntersectionObserver(callback, options);
 videos.forEach((video) => {
   observer.observe(video);
 });
+
+function pauseAllObservedVideos() {
+  videos.forEach((v) => v.pause());
+}
+
+function resumeVisibleVideos() {
+  videos.forEach((v) => {
+    const rect = v.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+    if (isVisible) {
+      v.play().catch((e) => console.log("Playback prevented:", e));
+    }
+  });
+}
