@@ -269,7 +269,7 @@ header {
   background: linear-gradient(
     to top,
     rgba(0, 0, 0, 0.8) 0%,
-    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.3) 40%,
     rgba(0, 0, 0, 0) 100%
   );
 }
