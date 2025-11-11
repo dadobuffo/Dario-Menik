@@ -14,6 +14,18 @@
         content="Sound Designer and Composer for games and media, audio engineer at Artifacts Recordings.">
     <meta name="theme-color" content="#161616">
 
+    <!-- SECURITY -->
+    <meta http-equiv="Content-Security-Policy" content="
+            default-src 'self';
+            script-src 'self' https://api.web3forms.com;
+            style-src 'self' 'unsafe-inline';
+            font-src 'self' data:;
+            img-src 'self' data:;
+            frame-src 'self';
+            frame-ancestors 'none';
+          ">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
     <!-- OPEN GRAPH -->
     <meta property="og:title" content="Dario Menik | Sound Designer & Audio Engineer">
     <meta property="og:description"
@@ -497,7 +509,7 @@
     <footer>
         <div class="footer-container">
             <a class="footer-mail" href="mailto:dariomenik@gmail.com"> dariomenik@gmail.com </a>
-            <p class="hideOnMobile">·</p>
+            <p class="hideOnMobile" style="cursor: default;">·</p>
             <div class="footer-social">
                 <a href="https://wa.me/+393883917855" target="_blank" rel="noopener noreferrer">
                     <img class="socials-icon" src="assets/icons/socials/whatsapp.svg" alt="Contact me on WhatsApp">
