@@ -904,6 +904,13 @@ header {
   background-color: rgb(255, 255, 255);
 }
 
+.contact-form-consent {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-self: flex-start;
+  margin-bottom: 1rem;
+}
 /* #endregion */
 
 /* #region: FOOTER */
@@ -1272,6 +1279,11 @@ footer .hideOnMobile {
   .program-icon {
     height: 19vw;
     width: 19vw;
+  }
+
+  .contact-form-consent {
+    gap: 5vw;
+    margin-bottom: 5vw;
   }
 
   .footer-social {

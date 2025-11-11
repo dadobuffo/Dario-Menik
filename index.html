@@ -16,16 +16,17 @@
 
     <!-- SECURITY -->
     <meta http-equiv="Content-Security-Policy" content="
-    default-src 'none';
-    script-src 'self' https://api.web3forms.com;
-    connect-src 'self' https://api.web3forms.com;
-    style-src 'self' 'unsafe-inline';
-    font-src 'self' data:;
-    img-src 'self' data:;
-    media-src 'self';
-    frame-ancestors 'none';
-    form-action 'self' https://api.web3forms.com;
-    base-uri 'self';">
+        default-src 'self';
+        script-src 'self' https://api.web3forms.com;
+        connect-src 'self' https://api.web3forms.com;
+        style-src 'self' 'unsafe-inline';
+        font-src 'self' data:;
+        img-src 'self' data:;
+        media-src 'self';
+        manifest-src 'self' https://www.dariomenik.com http://127.0.0.1:5500;
+        base-uri 'self';
+        form-action *;
+    ">
     <meta name="referrer" content="no-referrer">
 
     <!-- OPEN GRAPH -->
@@ -494,14 +495,12 @@
                             required></textarea>
 
                         <div class="contact-form-consent">
-                            <input type="checkbox" id="consent" name="consent" required>
-                            <label for="consent">
-                                I consent to the <a href="/privacy-policy.html" target="_blank">Privacy Policy</a>.
-                            </label>
+                            <input type="checkbox" id="consent" name="custom[consent]" required>
+                            <label for="consent">I consent to the <a href="/privacy-policy.html" target="_blank">
+                                    Privacy Policy</a>.</label>
                         </div>
 
                         <button class="contact-form-submit-button button" type="submit">SUBMIT</button>
-
                     </form>
                 </div>
             </div>
