@@ -109,6 +109,72 @@ main {
 
 /* #endregion */
 
+/* #region: FONT */
+
+@font-face {
+  font-display: swap;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 300;
+  src: url("/assets/fonts/raleway-v37-latin_latin-ext-300.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/assets/fonts/raleway-v37-latin_latin-ext-regular.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/assets/fonts/raleway-v37-latin_latin-ext-500.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 600;
+  src: url("/assets/fonts/raleway-v37-latin_latin-ext-600.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/assets/fonts/raleway-v37-latin_latin-ext-700.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 800;
+  src: url("/assets/fonts/raleway-v37-latin_latin-ext-800.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 900;
+  src: url("/assets/fonts/raleway-v37-latin_latin-ext-900.woff2")
+    format("woff2");
+}
+/* #endregion */
+
 /* #region: HEADER */
 
 header {
@@ -1218,10 +1284,3 @@ footer .hideOnMobile {
 }
 
 /* #endregion */
-
-iframe {
-  height: 400px;
-  max-width: 800px;
-  display: block;
-  margin: 0 auto;
-}
