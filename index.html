@@ -124,6 +124,12 @@
 
     <!-- JS -->
     <script src="script.js" defer></script>
+
+    <!-- FONTS -->
+    <link rel="preload" href="assets/fonts/raleway-v37-latin_latin-ext-regular.woff2" as="font" type="font/woff2"
+        crossorigin>
+    <link rel="preload" href="assets/fonts/raleway-v37-latin_latin-ext-600.woff2" as="font" type="font/woff2"
+        crossorigin>
 </head>
 
 <body>
@@ -167,7 +173,8 @@
         <section class="hero-section" id="home">
             <div class="hero-box">
                 <div class="box-background">
-                    <video loop muted playsinline preload="none" autoplay class="video-stop">
+                    <video loop muted playsinline preload="auto" fetchpriority="high" autoplay class="video-stop"
+                        poster="assets/videos/prey_poster.webp">
                         <source src="assets/videos/prey_gif.webm" type="video/webm">
                         <source src="assets/videos/prey_gif.mp4" type="video/mp4">
                         Your browser does not support the video tag.
