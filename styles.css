@@ -11,7 +11,7 @@
 
 :root {
   --bg-color-1: rgba(245, 245, 245, 1);
-  --bg-color-2: rgba(245, 245, 245, 1);
+  --bg-color-1: rgba(245, 245, 245, 1);
   --bg-color-3: rgba(22, 22, 22, 1);
 
   --color-1: rgba(255, 255, 255, 1);
@@ -21,11 +21,12 @@
   --box-shadow-1: 4px 3px 5px rgba(0, 0, 0, 0.3);
   --box-shadow-2: 3px 2px 4px rgba(0, 0, 0, 0.3);
 
-  --fs-small: 0.9rem;
+  --fs-large: 2.99rem;
+  --fs-medium: 1.44rem;
+  --fs-header: 1.2rem;
+  --fs-subtitle: 1.2rem;
   --fs-normal: 1rem;
-  --fs-medium: 1.3rem;
-  --fs-large: 3rem;
-  --fs-header: 1.1rem;
+  --fs-small: 0.83rem;
 }
 
 html {
@@ -35,11 +36,12 @@ html {
 
 body {
   font-family: "Raleway", sans-serif;
-  font-weight: normal;
   font-size: var(--fs-normal);
-  letter-spacing: 0.05rem;
+  font-weight: 500;
   line-height: 1.5;
+  letter-spacing: 0.01em;
   color: var(--color-2);
+
   background-color: var(--bg-color-1);
 
   position: relative;
@@ -51,7 +53,7 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: inherit;
   transition: color 0.1s ease-in-out;
 }
 
@@ -64,19 +66,22 @@ main {
   text-align: center;
   font-size: var(--fs-large);
   font-weight: 600;
-  letter-spacing: 0.1rem;
-  line-height: normal;
+  line-height: inherit;
+  letter-spacing: inherit;
   text-transform: uppercase;
   color: var(--color-2);
+
+  margin-bottom: 10px;
 }
 
 .section-subtitle {
   text-align: center;
-  font-size: var(--fs-medium);
-  font-weight: 300;
-  letter-spacing: normal;
-  line-height: normal;
-  margin: 20px 0 80px 0;
+  font-size: var(--fs-subtitle);
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+
+  margin-bottom: 80px;
 }
 
 .divider {
@@ -88,13 +93,14 @@ main {
 }
 
 .button {
-  cursor: pointer;
-  padding: 0.5rem 1rem;
   font: inherit;
   font-size: var(--fs-normal);
-  font-weight: 500;
-  letter-spacing: 0.08rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
   color: var(--color-2);
+
+  cursor: pointer;
+  padding: 0.5rem 1rem;
   background-color: transparent;
   border: 1px solid rgba(0, 0, 0, 0.4);
   border-radius: 4px;
@@ -208,7 +214,10 @@ header {
 
 .absolute-header ul {
   display: flex;
-  gap: 30px;
+  align-items: center;
+  justify-content: right;
+
+  gap: 25px;
 }
 
 .absolute-header a:hover,
@@ -240,7 +249,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 25px;
 }
 
 .fixed-header a:hover,
@@ -357,25 +366,28 @@ header {
 }
 
 .box-title {
-  font-size: var(--fs-medium);
-  letter-spacing: 0.1rem;
   text-transform: uppercase;
+  font-size: var(--fs-medium);
+  font-weight: 600;
   line-height: normal;
+  letter-spacing: 0.02em;
+
   margin-bottom: 5px;
 }
 
 .box-description {
   font-size: var(--fs-small);
-  letter-spacing: normal;
+  font-weight: 400;
   line-height: normal;
+  letter-spacing: inherit;
 }
 
 .arrow-right {
   position: absolute;
   right: 30px;
   bottom: 30px;
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
 
   opacity: 0.8;
 }
@@ -562,7 +574,6 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: start;
-  gap: 1rem;
 
   max-width: clamp(50ch, 50vw, 70ch);
 }
@@ -1033,16 +1044,24 @@ footer .hideOnMobile {
   }
 
   .coming-soon {
-    font-size: 1.2rem;
+    font-size: var(--fs-header);
   }
 }
 
 @media (max-width: 768px) {
   :root {
-    --fs-small: 0.9rem;
+    --fs-large: 2.49rem;
+    --fs-medium: 1.44rem;
+    --fs-header: 1.2rem;
+    --fs-subtitle: 1.2rem;
     --fs-normal: 1rem;
-    --fs-medium: 1.3rem;
-    --fs-large: clamp(2rem, 6.5vw, 3rem);
+    --fs-small: 0.83rem;
+  }
+
+  body {
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: normal;
   }
 
   .absolute-header,
@@ -1064,8 +1083,14 @@ footer .hideOnMobile {
     display: none;
   }
 
+  .section-title {
+    line-height: normal;
+    margin-bottom: 10px;
+  }
+
   .section-subtitle {
-    margin: 15px 0 40px 0;
+    line-height: normal;
+    margin-bottom: 40px;
   }
 
   .hero-section {
@@ -1166,16 +1191,14 @@ footer .hideOnMobile {
 
 @media (max-width: 500px) {
   :root {
-    --fs-small: 0.8rem;
-    --fs-normal: 0.9rem;
-    --fs-medium: 1rem;
-    --fs-large: 2rem;
+    --fs-large: 1.88rem;
+    --fs-medium: 1.3rem;
+    --fs-header: 1.09rem;
+    --fs-subtitle: 0.91rem;
+    --fs-normal: 0.91rem;
+    --fs-small: 0.76rem;
   }
 
-  .section-title,
-  .about-title,
-  .contact-title,
-  .section-subtitle,
   .contact-description,
   .contact-mail {
     text-align: left;
@@ -1202,15 +1225,11 @@ footer .hideOnMobile {
     padding: 0 60px 20px 20px;
   }
 
-  .box-title {
-    letter-spacing: 0.05rem;
-  }
-
   .arrow-right {
     right: 20px;
     bottom: 20px;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
   }
 
   .credits-grid-element {
@@ -1248,50 +1267,219 @@ footer .hideOnMobile {
 
 @media (max-width: 320px) {
   :root {
-    --fs-small: 4vw;
-    --fs-normal: 4.6vw;
-    --fs-medium: 4.8vw;
-    --fs-large: 10vw;
+    --fs-large: 9.4vw;
+    --fs-medium: 6.5vw;
+    --fs-header: 5.45vw;
+    --fs-subtitle: 4.55vw;
+    --fs-normal: 4.55vw;
+    --fs-small: 3.8vw;
   }
 
-  .absolute-header .logo,
-  .sidebar-header .logo {
-    height: 12.5vw;
+  .section-title {
+    margin-bottom: 3.13vw;
+  }
+
+  .section-subtitle {
+    margin-bottom: 12.5vw;
+  }
+
+  .divider {
+    width: 80%;
+    margin: 31.25vw auto;
   }
 
   .button {
-    padding: 2.4vw 4.8vw;
+    padding: 2.5vw 5vw;
+    border-radius: 1.25vw;
+  }
+
+  header {
+    font-size: var(--fs-header);
+  }
+
+  .absolute-header,
+  .fixed-header {
+    display: none;
+  }
+
+  .sidebar-header .logo {
+    top: 9.38vw;
+    height: 12.5vw;
+  }
+
+  .open-sidebar-button {
+    top: 8.5vw;
+    right: 7.5vw;
+    padding: 0.94vw;
+  }
+
+  .close-sidebar-button {
+    top: 12.5vw;
+    right: 9.38vw;
+  }
+
+  .box-text {
+    padding: 0 18.75vw 6.25vw 6.25vw;
+  }
+
+  .box-title {
+    margin-bottom: 1.56vw;
   }
 
   .arrow-right {
-    width: 9vw;
-    height: 9vw;
+    right: 6.25vw;
+    bottom: 6.25vw;
+    width: 7.81vw;
+    height: 7.81vw;
+  }
+
+  .hero-section {
+    padding: 31.25vw 3.13vw;
+  }
+
+  .hero-box {
+    min-height: 115vw;
+    border-radius: 6.25vw;
+  }
+
+  .hero-content {
+    padding: 15vw 5vw;
+  }
+
+  .hero-content h2 {
+    letter-spacing: 1vw;
+  }
+
+  .hero-reel-button {
+    bottom: 15.63vw;
+    left: 50%;
+  }
+
+  .hero-reel-button button {
+    padding: 2.5vw 5vw;
+    border-radius: 1.25vw;
+  }
+
+  .hero-arrow-icon {
+    height: 15vw;
+  }
+
+  .about-section {
+    padding: 31.25vw 3.13vw 0 3.13vw;
+  }
+
+  .about-container {
+    gap: 25vw;
+    margin-bottom: 31.25vw;
+  }
+
+  .about-left-section img {
+    border-radius: 3.13vw;
+  }
+
+  .about-text {
+    gap: 5vw;
+  }
+
+  .portfolio-section {
+    padding: 31.25vw 3.13vw 15.63vw 3.13vw;
+  }
+
+  .credits-grid {
+    gap: 3.13vw;
+  }
+
+  .credits-grid-element {
+    aspect-ratio: 3 / 2;
+    border-radius: 5vw;
   }
 
   .coming-soon {
-    padding: 3vw 4vw;
+    letter-spacing: 0.5vw;
+    padding: 2.5vw 5vw;
+    border-width: 0.94vw;
+  }
+
+  .implementation-grid {
+    gap: 3.13vw;
+  }
+
+  .implementation-grid-element {
+    border-radius: 2.5vw;
   }
 
   .programs-icon-container {
-    gap: 3vw;
+    gap: 3.13vw;
+    margin: 18.75vw 0;
   }
 
   .program-icon {
-    height: 19vw;
-    width: 19vw;
+    width: 18.75vw;
+    height: 18.75vw;
   }
 
-  .contact-form-consent {
+  .redesign-grid {
+    gap: 3.13vw;
+  }
+
+  .redesign-grid-element,
+  .redesign-grid-element:first-child {
+    border-radius: 2.5vw;
+  }
+
+  .contact-section {
+    padding: 31.25vw 3.13vw;
+  }
+
+  .contact-container {
+    gap: 15.63vw;
+  }
+
+  .contact-form {
     gap: 5vw;
+  }
+
+  .contact-form-box {
+    height: 12.5vw;
+    padding: 0 6vw;
+    border-radius: 2vw;
+  }
+
+  .contact-form-textarea {
+    height: 50vw;
+    padding: 5vw 6vw;
     margin-bottom: 5vw;
+    border-radius: 2vw;
+  }
+
+  footer {
+    height: 46.88vw;
+  }
+
+  .footer-container {
+    gap: 6.25vw;
   }
 
   .footer-social {
-    gap: 5.8svw;
+    gap: 6.25vw;
   }
 
   .socials-icon {
-    height: 4.8vw;
+    height: 4.69vw;
+  }
+
+  .thanks-container {
+    padding: 12.5vw 15.63vw;
+    border-radius: 3.75vw;
+    max-width: 125vw;
+  }
+
+  .thanks-container h1 {
+    margin-bottom: 6.25vw;
+  }
+
+  .thanks-container p {
+    margin-bottom: 12.5vw;
   }
 }
 
