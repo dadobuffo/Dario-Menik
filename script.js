@@ -141,3 +141,69 @@ function resumeVisibleVideos() {
     }
   });
 }
+
+// CAROUSEL
+
+document.addEventListener("DOMContentLoaded", function () {
+  const carousel = document.getElementById("carousel");
+  const slides = document.querySelectorAll(".slide");
+  const previousButton = document.getElementById("previous");
+  const nextButton = document.getElementById("next");
+
+  const totalSlides = slides.length;
+  let slideOrder = [0, 1, 2];
+
+  function initializeCarousel() {
+    updateSlidePositions();
+  }
+
+  function updateSlidePositions() {
+    slides.forEach((slide) => {
+      slide.classList.remove("left", "center", "right");
+    });
+
+    slides[slideOrder[0]].classList.add("left");
+    slides[slideOrder[1]].classList.add("center");
+    slides[slideOrder[2]].classList.add("right");
+  }
+
+  function rotateRight() {
+    slideOrder.push(slideOrder.shift());
+    updateSlidePositions();
+  }
+
+  function rotateLeft() {
+    slideOrder.unshift(slideOrder.pop());
+    updateSlidePositions();
+  }
+
+  previousButton.addEventListener("click", rotateLeft);
+  nextButton.addEventListener("click", rotateRight);
+
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  carousel.addEventListener("touchstart", function (e) {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  carousel.addEventListener("touchend", function (e) {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        rotateRight();
+      } else {
+        rotateLeft();
+      }
+    }
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "ArrowRight") rotateLeft();
+    if (event.key === "ArrowLeft") rotateRight();
+  });
+
+  initializeCarousel();
+});
