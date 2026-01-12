@@ -136,7 +136,7 @@
 
 <body>
     <header>
-        <div class="absolute-header">
+        <div class="hero-header">
             <img class="logo" src="assets/icons/logo_black.svg" alt="Dario Menik Logo">
             <nav>
                 <ul>
@@ -155,17 +155,23 @@
                 <li><a href="#contact">CONTACT</a></li>
             </ul>
         </div>
-        <div class="sidebar-header">
-            <img class="logo" src="assets/icons/logo_black.svg" alt="Dario Menik logo">
-            <img class="open-sidebar-button" onclick=showSidebar() src="assets/icons/menu.svg" alt="Open menu">
 
-            <ul class="sidebar">
-                <img class="close-sidebar-button" onclick=hideSidebar() src="assets/icons/close.svg" alt="Close menu">
-                <li><a href="#home">HOME</a></li>
-                <li><a href="#about">ABOUT</a></li>
-                <li><a href="#portfolio">PORTFOLIO</a></li>
-                <li><a href="#contact">CONTACT</a></li>
-            </ul>
+        <img class="mobile-logo" src="assets/icons/logo_black.svg" alt="Dario Menik Logo">
+        <div class="mobile-header">
+            <button class="menu-toggle" aria-label="Open menu" id="menuToggle">
+                <img src="assets/icons/menu.svg" alt="Menu" class="menu-icon">
+                <img src="assets/icons/close.svg" alt="Close" class="close-icon">
+            </button>
+        </div>
+        <div class="mobile-overlay" id="mobileOverlay">
+            <nav class="mobile-nav">
+                <ul>
+                    <li><a href="#home" class="mobile-link">HOME</a></li>
+                    <li><a href="#about" class="mobile-link">ABOUT</a></li>
+                    <li><a href="#portfolio" class="mobile-link">PORTFOLIO</a></li>
+                    <li><a href="#contact" class="mobile-link">CONTACT</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
@@ -311,73 +317,70 @@
                 </div>
 
                 <div class="carousel-container">
-                    <div class="carousel-wrapper">
-                        <div class="carousel" id="carousel">
-                            <div class="slide left" data-index="0">
-                                <div class="credits-grid-element">
-                                    <div class="box-background">
-                                        <img src="assets/images/gardenia_box.webp" alt="Gardenia's Road">
-                                    </div>
-                                    <div class="credits-overlay"></div>
-                                    <div class="box-content">
-                                        <h3 class="coming-soon">Coming Soon</h3>
-                                    </div>
+                    <div class="carousel">
+                        <div class="slide active">
+                            <div class="credits-grid-element">
+                                <div class="box-background">
+                                    <img src="assets/images/gardenia_box.webp" alt="Gardenia's Road">
+                                </div>
+                                <div class="box-overlay"></div>
+                                <div class="box-content">
+                                    <h3 class="coming-soon">Coming Soon</h3>
                                 </div>
                             </div>
-                            <div class="slide center" data-index="1">
-                                <a href="https://store.steampowered.com/app/3448870/Necrologium" target="_blank">
-                                    <div class="credits-grid-element">
-                                        <div class="box-background">
-                                            <img src="assets/images/necrologium_box.webp" alt="Necrologium">
+                        </div>
+                        <div class="slide right">
+                            <a href="https://store.steampowered.com/app/3448870/Necrologium" target="_blank">
+                                <div class="credits-grid-element">
+                                    <div class="box-background">
+                                        <img src="assets/images/necrologium_box.webp" alt="Necrologium">
+                                    </div>
+                                    <div class="box-overlay"></div>
+                                    <div class="box-content">
+                                        <div class="box-text credits-text">
+                                            <h3 class="box-title">Necrologium</h3>
+                                            <p class="box-description">Sound Designer, Composer</p>
                                         </div>
-                                        <div class="credits-overlay"></div>
-                                        <div class="box-content">
-                                            <div class="box-text credits-text">
-                                                <h3 class="box-title">Necrologium</h3>
-                                                <p class="box-description">Sound Designer, Composer</p>
-                                            </div>
-                                            <div class="arrow-right">
-                                                <img src="assets/icons/arrow_right_box_empty.svg"
-                                                    class="arrow-right-empty" alt="">
-                                                <img src="assets/icons/arrow_right_box_full.svg"
-                                                    class="arrow-right-full" alt="">
-                                            </div>
+                                        <div class="arrow-right">
+                                            <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty"
+                                                alt="">
+                                            <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full"
+                                                alt="">
                                         </div>
                                     </div>
-                                </a>
-                            </div>
-                            <div class="slide right" data-index="2">
-                                <a href="https://callisto-gaming.itch.io/ammazzacaffe" target="_blank">
-                                    <div class="credits-grid-element">
-                                        <div class="box-background">
-                                            <img src="assets/images/ammazzacaffé_box.webp" alt="Ammazzacaffé">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="slide left">
+                            <a href="https://callisto-gaming.itch.io/ammazzacaffe" target="_blank">
+                                <div class="credits-grid-element">
+                                    <div class="box-background">
+                                        <img src="assets/images/ammazzacaffé_box.webp" alt="Ammazzacaffé">
+                                    </div>
+                                    <div class="box-overlay"></div>
+                                    <div class="box-content">
+                                        <div class="box-text credits-text">
+                                            <h3 class="box-title">Ammazzacaffé</h3>
+                                            <p class="box-description">Sound Designer, Composer, Audio Programmer</p>
                                         </div>
-                                        <div class="box-overlay"></div>
-                                        <div class="box-content">
-                                            <div class="box-text credits-text">
-                                                <h3 class="box-title">Ammazzacaffé</h3>
-                                                <p class="box-description">Sound Designer, Composer, Audio Programmer
-                                                </p>
-                                            </div>
-                                            <div class="arrow-right">
-                                                <img src="assets/icons/arrow_right_box_empty.svg"
-                                                    class="arrow-right-empty" alt="">
-                                                <img src="assets/icons/arrow_right_box_full.svg"
-                                                    class="arrow-right-full" alt="">
-                                            </div>
+                                        <div class="arrow-right">
+                                            <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty"
+                                                alt="">
+                                            <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full"
+                                                alt="">
                                         </div>
                                     </div>
-                                </a>
-                            </div>
+                                </div>
+                            </a>
                         </div>
                     </div>
 
-                    <div class="controls">
-                        <button class="carousel-button" id="previous">&#10094;</button>
-                        <button class="carousel-button" id="next">&#10095;</button>
+                    <div class="carousel-controls">
+                        <button class="carousel-prev"><img src="assets/icons/arrow_left.svg"
+                                alt="Previous slide"></button>
+                        <button class="carousel-next"><img src="assets/icons/arrow_right.svg" alt="Next slide"></button>
                     </div>
                 </div>
-
             </div>
 
             <hr class="divider ">
@@ -439,6 +442,83 @@
                                 <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full" alt="">
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="carousel-container">
+                    <div class="carousel">
+                        <div class="slide active">
+                            <div class="implementation-grid-element open-modal"
+                                data-poster="assets/videos/prey_poster.webp" data-webm=""
+                                data-mp4="assets/videos/prey_video.mp4">
+                                <div class="box-background">
+                                    <img src="assets/test/1.png" alt="">
+                                </div>
+                                <div class="box-overlay"></div>
+                                <div class="box-content">
+                                    <div class="box-text implementation-text">
+                                        <h3 class="box-title">FMOD Implementation</h3>
+                                        <p class="box-description">Description</p>
+                                    </div>
+                                    <div class="arrow-right">
+                                        <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty"
+                                            alt="">
+                                        <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full"
+                                            alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slide right">
+                            <div class="implementation-grid-element open-modal"
+                                data-poster="assets/videos/prey_poster.webp" data-webm=""
+                                data-mp4="assets/videos/prey_video.mp4">
+                                <div class="box-background">
+                                    <img src="assets/test/2.png" alt="">
+                                </div>
+                                <div class="box-overlay"></div>
+                                <div class="box-content">
+                                    <div class="box-text implementation-text">
+                                        <h3 class="box-title">Wwise Implementation</h3>
+                                        <p class="box-description">Description</p>
+                                    </div>
+                                    <div class="arrow-right">
+                                        <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty"
+                                            alt="">
+                                        <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full"
+                                            alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slide left">
+                            <div class="implementation-grid-element open-modal"
+                                data-poster="assets/videos/prey_poster.webp" data-webm=""
+                                data-mp4="assets/videos/prey_video.mp4">
+                                <div class="box-background">
+                                    <img src="assets/test/3.png" alt="">
+                                </div>
+                                <div class="box-overlay"></div>
+                                <div class="box-content">
+                                    <div class="box-text implementation-text">
+                                        <h3 class="box-title">Unity Implementation</h3>
+                                        <p class="box-description">Description</p>
+                                    </div>
+                                    <div class="arrow-right">
+                                        <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty"
+                                            alt="">
+                                        <img src="assets/icons/arrow_right_box_full.svg" class="arrow-right-full"
+                                            alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-controls">
+                        <button class="carousel-prev"><img src="assets/icons/arrow_left.svg"
+                                alt="Previous slide"></button>
+                        <button class="carousel-next"><img src="assets/icons/arrow_right.svg" alt="Next slide"></button>
                     </div>
                 </div>
 
@@ -559,43 +639,31 @@
 
         <section class="contact-section" id="contact">
             <div class="section-title-container">
-                <h1 class=" contact-title">GET IN TOUCH</h1>
+                <h2 class="section-title">Get in touch</h2>
+                <p class="section-subtitle">Interested in working together? Drop me an email or fill the form below ~
+                </p>
             </div>
 
-            <div class="contact-container">
-                <div class="contact-left-section">
-                    <div class="contact-description">
-                        <p>Interested in working together?</p>
-                        <p> Drop me an email or fill the form below ~ </p>
-                    </div>
+            <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
 
-                    <div class="contact-mail">
-                        <a href="mailto:dariomenik@gmail.com"> dariomenik@gmail.com </a>
-                    </div>
+                <input type="hidden" name="access_key" value="4c5c682c-ebd8-4920-be9d-38d34ea3ecfb">
+                <input type="hidden" name="redirect" value="https://dariomenik.com/thanks.html">
+                <input type="hidden" name="replyto" value="email">
+                <input type="hidden" name="from_name" value="dariomenik.com">
+
+                <input class="contact-form-box" type="text" name="name" placeholder="your name &ast;" required>
+                <input class="contact-form-box" type="email" name="email" placeholder="email &ast;" required>
+                <textarea class=" contact-form-textarea" name="message" rows="5" placeholder="message &ast;"
+                    required></textarea>
+
+                <div class="contact-form-consent">
+                    <input type="checkbox" id="consent" name="custom[consent]" required>
+                    <label for="consent">I consent to the <a href="/privacy-policy.html" target="_blank">
+                            Privacy Policy</a>.</label>
                 </div>
-                <div class="contact-right-section">
-                    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
 
-                        <input type="hidden" name="access_key" value="4c5c682c-ebd8-4920-be9d-38d34ea3ecfb">
-                        <input type="hidden" name="redirect" value="https://dariomenik.com/thanks.html">
-                        <input type="hidden" name="replyto" value="email">
-                        <input type="hidden" name="from_name" value="dariomenik.com">
-
-                        <input class="contact-form-box" type="text" name="name" placeholder="your name &ast;" required>
-                        <input class="contact-form-box" type="email" name="email" placeholder="email &ast;" required>
-                        <textarea class=" contact-form-textarea" name="message" rows="5" placeholder="message &ast;"
-                            required></textarea>
-
-                        <div class="contact-form-consent">
-                            <input type="checkbox" id="consent" name="custom[consent]" required>
-                            <label for="consent">I consent to the <a href="/privacy-policy.html" target="_blank">
-                                    Privacy Policy</a>.</label>
-                        </div>
-
-                        <button class="contact-form-submit-button button" type="submit">SUBMIT</button>
-                    </form>
-                </div>
-            </div>
+                <button class="contact-form-submit-button button" type="submit">SUBMIT</button>
+            </form>
         </section>
 
         <dialog class="modal" id="videoModal">

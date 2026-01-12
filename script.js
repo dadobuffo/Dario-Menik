@@ -1,209 +1,246 @@
-// HEADER
-
-function showSidebar() {
-  const sidebar = document.querySelector(".sidebar");
-  sidebar.style.display = "flex";
-}
-
-function hideSidebar() {
-  const sidebar = document.querySelector(".sidebar");
-  sidebar.style.display = "none";
-}
-
-function updateHeaderVisibility() {
-  let scrollThreshold = window.matchMedia("(max-width: 800px)").matches
-    ? 31 * 16
-    : 51 * 16;
-
-  if (window.scrollY > scrollThreshold) {
-    document.querySelector(".fixed-header").style.top = "0";
-  } else {
-    document.querySelector(".fixed-header").style.top = "-4rem";
-  }
-}
-
-window.addEventListener("scroll", updateHeaderVisibility);
-
-updateHeaderVisibility();
-
-// ARROW ICON
-
-document.querySelector(".hero-arrow-icon").addEventListener("click", (e) => {
-  e.preventDefault();
-  const target = document.querySelector("#about");
-  if (target) {
-    const offset = 0;
-    const top = target.getBoundingClientRect().top + window.scrollY + offset;
-
-    window.scrollTo({
-      top: top,
-      behavior: "smooth",
-    });
-  }
-});
-
-// MODALS
-
-const openButtons = document.querySelectorAll(".open-modal");
-const modal = document.getElementById("videoModal");
-const video = modal.querySelector("video");
-const sourceWebm = document.getElementById("videoSourceWebm");
-const sourceMp4 = document.getElementById("videoSourceMp4");
-
-openButtons.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    video.poster = btn.dataset.poster;
-    sourceWebm.src = btn.dataset.webm;
-    sourceMp4.src = btn.dataset.mp4;
-
-    video.load();
-
-    modal.showModal();
-    requestAnimationFrame(() => modal.classList.add("show"));
-    disableScroll();
-  });
-});
-
-modal.querySelector(".close-modal").addEventListener("click", () => {
-  closeModal(modal);
-});
-
-modal.addEventListener("click", (e) => {
-  const dialogDimensions = modal.getBoundingClientRect();
-  if (
-    e.clientX < dialogDimensions.left ||
-    e.clientX > dialogDimensions.right ||
-    e.clientY < dialogDimensions.top ||
-    e.clientY > dialogDimensions.bottom
-  ) {
-    closeModal(modal);
-  }
-});
-
-modal.addEventListener("cancel", (e) => {
-  e.preventDefault();
-  closeModal(modal);
-});
-
-function closeModal(modal) {
-  video.pause();
-  modal.classList.remove("show");
-  enableScroll();
-  modal.close();
-}
-
-function disableScroll() {
-  document.body.style.overflow = "hidden";
-}
-
-function enableScroll() {
-  document.body.style.overflow = "";
-}
-
-// GIF PAUSE
-
-const videos = document.querySelectorAll(".video-stop");
-
-const options = {
-  root: null,
-  rootMargin: "0px",
-  threshold: 0.1,
-};
-
-const callback = (entries) => {
-  entries.forEach((entry) => {
-    const video = entry.target;
-    if (entry.isIntersecting) {
-      video.play().catch((e) => console.log("Playback prevented:", e));
-    } else {
-      video.pause();
-    }
-  });
-};
-
-const observer = new IntersectionObserver(callback, options);
-
-videos.forEach((video) => {
-  observer.observe(video);
-});
-
-function pauseAllObservedVideos() {
-  videos.forEach((v) => v.pause());
-}
-
-function resumeVisibleVideos() {
-  videos.forEach((v) => {
-    const rect = v.getBoundingClientRect();
-    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-
-    if (isVisible) {
-      v.play().catch((e) => console.log("Playback prevented:", e));
-    }
-  });
-}
-
-// CAROUSEL
+// HEADER E MENU MOBILE
 
 document.addEventListener("DOMContentLoaded", function () {
-  const carousel = document.getElementById("carousel");
-  const slides = document.querySelectorAll(".slide");
-  const previousButton = document.getElementById("previous");
-  const nextButton = document.getElementById("next");
+  const menuToggle = document.getElementById("menuToggle");
+  const mobileOverlay = document.getElementById("mobileOverlay");
+  const mobileLinks = document.querySelectorAll(".mobile-link");
+  const body = document.body;
 
-  const totalSlides = slides.length;
-  let slideOrder = [0, 1, 2];
-
-  function initializeCarousel() {
-    updateSlidePositions();
+  // Funzione per aprire il menu mobile (toglie solo overflow)
+  function openMenu() {
+    body.style.overflow = "hidden";
   }
 
-  function updateSlidePositions() {
-    slides.forEach((slide) => {
-      slide.classList.remove("left", "center", "right");
+  // Funzione per chiudere il menu mobile (ripristina overflow)
+  function closeMenu() {
+    body.style.overflow = "";
+  }
+
+  // Aggiungi/rimuovi classe active al toggle (CSS gestisce la visibilità)
+  if (menuToggle) {
+    menuToggle.addEventListener("click", function (e) {
+      e.stopPropagation();
+      const isActive = mobileOverlay.classList.contains("active");
+
+      if (isActive) {
+        menuToggle.classList.remove("active");
+        mobileOverlay.classList.remove("active");
+        closeMenu();
+      } else {
+        menuToggle.classList.add("active");
+        mobileOverlay.classList.add("active");
+        openMenu();
+      }
     });
-
-    slides[slideOrder[0]].classList.add("left");
-    slides[slideOrder[1]].classList.add("center");
-    slides[slideOrder[2]].classList.add("right");
   }
 
-  function rotateRight() {
-    slideOrder.push(slideOrder.shift());
-    updateSlidePositions();
-  }
-
-  function rotateLeft() {
-    slideOrder.unshift(slideOrder.pop());
-    updateSlidePositions();
-  }
-
-  previousButton.addEventListener("click", rotateLeft);
-  nextButton.addEventListener("click", rotateRight);
-
-  let touchStartX = 0;
-  let touchEndX = 0;
-
-  carousel.addEventListener("touchstart", function (e) {
-    touchStartX = e.changedTouches[0].screenX;
+  // Chiudi menu cliccando su un link
+  mobileLinks.forEach((link) => {
+    link.addEventListener("click", function () {
+      menuToggle.classList.remove("active");
+      mobileOverlay.classList.remove("active");
+      closeMenu();
+    });
   });
 
-  carousel.addEventListener("touchend", function (e) {
-    touchEndX = e.changedTouches[0].screenX;
-    const diff = touchStartX - touchEndX;
-
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) {
-        rotateRight();
-      } else {
-        rotateLeft();
+  // Chiudi menu cliccando fuori dall'overlay
+  if (mobileOverlay) {
+    mobileOverlay.addEventListener("click", function (e) {
+      if (e.target === mobileOverlay) {
+        menuToggle.classList.remove("active");
+        mobileOverlay.classList.remove("active");
+        closeMenu();
       }
+    });
+  }
+
+  // Chiudi menu con ESC
+  document.addEventListener("keydown", function (e) {
+    if (
+      e.key === "Escape" &&
+      mobileOverlay &&
+      mobileOverlay.classList.contains("active")
+    ) {
+      menuToggle.classList.remove("active");
+      mobileOverlay.classList.remove("active");
+      closeMenu();
     }
   });
 
-  document.addEventListener("keydown", function (event) {
-    if (event.key === "ArrowRight") rotateLeft();
-    if (event.key === "ArrowLeft") rotateRight();
-  });
+  // HEADER FISSO (per desktop)
+  function updateHeaderVisibility() {
+    const fixedHeader = document.querySelector(".fixed-header");
+    if (!fixedHeader) return;
 
-  initializeCarousel();
+    // Calcola soglia in base alla dimensione dello schermo
+    let scrollThreshold = window.matchMedia("(max-width: 800px)").matches
+      ? 496
+      : 816;
+
+    // Aggiorna la posizione dell'header fisso
+    if (window.scrollY > scrollThreshold) {
+      fixedHeader.style.top = "0";
+    } else {
+      fixedHeader.style.top = "-64px";
+    }
+  }
+
+  // Inizializza l'header fisso solo su desktop (>768px)
+  if (window.innerWidth > 768) {
+    window.addEventListener("scroll", updateHeaderVisibility);
+    updateHeaderVisibility(); // Chiamata iniziale
+  }
+
+  // ARROW ICON
+
+  const heroArrow = document.querySelector(".hero-arrow-icon");
+  if (heroArrow) {
+    heroArrow.addEventListener("click", (e) => {
+      e.preventDefault();
+      const target = document.querySelector("#about");
+      if (target) {
+        const offset = window.innerWidth <= 768 ? 70 : 0;
+        const top =
+          target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: top, behavior: "smooth" });
+      }
+    });
+  }
+
+  // MODALS
+
+  const openButtons = document.querySelectorAll(".open-modal");
+  const modal = document.getElementById("videoModal");
+
+  if (modal) {
+    const video = modal.querySelector("video");
+    const sourceWebm = document.getElementById("videoSourceWebm");
+    const sourceMp4 = document.getElementById("videoSourceMp4");
+
+    function closeModal() {
+      video.pause();
+      modal.classList.remove("show");
+      document.body.style.overflow = "";
+      setTimeout(() => modal.close(), 300);
+    }
+
+    openButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        if (mobileOverlay.classList.contains("active")) {
+          menuToggle.classList.remove("active");
+          mobileOverlay.classList.remove("active");
+          closeMenu();
+        }
+
+        video.poster = btn.dataset.poster;
+        if (sourceWebm) sourceWebm.src = btn.dataset.webm;
+        if (sourceMp4) sourceMp4.src = btn.dataset.mp4;
+        video.load();
+
+        modal.showModal();
+        requestAnimationFrame(() => modal.classList.add("show"));
+        document.body.style.overflow = "hidden";
+      });
+    });
+
+    const closeModalBtn = modal.querySelector(".close-modal");
+    if (closeModalBtn) {
+      closeModalBtn.addEventListener("click", closeModal);
+    }
+
+    modal.addEventListener("click", (e) => {
+      const rect = modal.getBoundingClientRect();
+      if (
+        e.clientX < rect.left ||
+        e.clientX > rect.right ||
+        e.clientY < rect.top ||
+        e.clientY > rect.bottom
+      ) {
+        closeModal();
+      }
+    });
+
+    modal.addEventListener("cancel", (e) => {
+      e.preventDefault();
+      closeModal();
+    });
+  }
+
+  // GIF PAUSE
+  const videos = document.querySelectorAll(".video-stop");
+  if (videos.length > 0) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target;
+          if (entry.isIntersecting) {
+            video.play().catch((e) => console.log("Playback prevented:", e));
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    videos.forEach((video) => observer.observe(video));
+  }
+
+  // CAROUSEL
+
+  document.querySelectorAll(".carousel-container").forEach((container) => {
+    const slides = container.querySelectorAll(".slide");
+    const prevBtn = container.querySelector(".carousel-prev");
+    const nextBtn = container.querySelector(".carousel-next");
+    const carousel = container.querySelector(".carousel");
+    let current = 0;
+
+    function updateSlides() {
+      slides.forEach((slide, i) => {
+        const content = slide.querySelector(".box-content");
+        slide.classList.remove("active", "left", "right");
+
+        if (i === current) {
+          slide.classList.add("active");
+          if (content) content.style.opacity = "1";
+        } else if (i === (current - 1 + slides.length) % slides.length) {
+          slide.classList.add("left");
+          if (content) content.style.opacity = "0";
+        } else if (i === (current + 1) % slides.length) {
+          slide.classList.add("right");
+          if (content) content.style.opacity = "0";
+        } else if (content) {
+          content.style.opacity = "0";
+        }
+      });
+    }
+
+    function nextSlide() {
+      current = (current + 1) % slides.length;
+      updateSlides();
+    }
+
+    function prevSlide() {
+      current = (current - 1 + slides.length) % slides.length;
+      updateSlides();
+    }
+
+    if (prevBtn) prevBtn.addEventListener("click", prevSlide);
+    if (nextBtn) nextBtn.addEventListener("click", nextSlide);
+
+    if (carousel) {
+      let startX = 0;
+      carousel.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX;
+      });
+      carousel.addEventListener("touchend", (e) => {
+        const diff = e.changedTouches[0].clientX - startX;
+        if (Math.abs(diff) > 50) {
+          diff < 0 ? nextSlide() : prevSlide();
+        }
+      });
+    }
+
+    updateSlides();
+  });
 });
