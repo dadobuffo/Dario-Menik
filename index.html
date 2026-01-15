@@ -6,6 +6,7 @@
     <title>Dario Menik | Sound Designer & Audio Engineer</title>
 
     <!-- METADATA -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
@@ -15,6 +16,7 @@
     <meta name="theme-color" content="#161616">
 
     <!-- SECURITY -->
+
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
         script-src 'self' https://api.web3forms.com;
@@ -30,6 +32,7 @@
     <meta name="referrer" content="no-referrer">
 
     <!-- OPEN GRAPH -->
+
     <meta property="og:title" content="Dario Menik | Sound Designer & Audio Engineer">
     <meta property="og:description"
         content="Sound Designer and Composer for games and media, audio engineer at Artifacts Recordings.">
@@ -38,6 +41,7 @@
     <meta property="og:type" content="website">
 
     <!-- TWITTER CARD -->
+
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Dario Menik | Sound Designer & Audio Engineer">
     <meta name="twitter:description"
@@ -45,6 +49,7 @@
     <meta name="twitter:image" content="">
 
     <!-- JSON-LD -->
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -112,6 +117,7 @@
     </script>
 
     <!-- FAVICON -->
+
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -120,12 +126,15 @@
     <link rel="manifest" href="/site.webmanifest" />
 
     <!-- CSS -->
+
     <link rel="stylesheet" href="styles.css">
 
     <!-- JS -->
+
     <script src="script.js" defer></script>
 
     <!-- FONTS -->
+
     <link rel="preload" href="assets/fonts/raleway-v37-latin_latin-ext-regular.woff2" as="font" type="font/woff2"
         crossorigin>
     <link rel="preload" href="assets/fonts/raleway-v37-latin_latin-ext-500.woff2" as="font" type="font/woff2"
@@ -176,7 +185,7 @@
     </header>
 
     <main>
-        <!-- HOME -->
+        <!-- HERO -->
 
         <section class="hero-section" id="home">
             <div class="hero-box">
@@ -190,11 +199,17 @@
                 </div>
                 <div class="hero-overlay"></div>
                 <div class="hero-content">
-                    <h2>| Sound Designer</h2>
-                    <h2>| Audio Engineer</h2>
-                    <h2>| Composer</h2>
+                    <h1 class="hero-title">
+                        <span class="first-line">Audio Engineer, Composer <span class="small">and</span></span>
+                        <span>Sound Designer</span>
+                        <span class="last-line">
+                            <span class="small"
+                                style="position: relative; display: inline-block; vertical-align: top; top: 0.4em;">for</span>
+                            <span class="big">Video Games</span>
+                        </span>
+                    </h1>
                 </div>
-                <div class="hero-reel-button">
+                <div class="hero-button">
                     <button class="open-modal" data-poster="assets/videos/prey_poster.webp" data-webm=""
                         data-mp4="assets/videos/prey_video.mp4">
                         PLAY REEL
@@ -202,7 +217,11 @@
                 </div>
             </div>
 
-            <img src="assets/icons/arrow_down.svg" alt="" class="hero-arrow-icon">
+            <div class="hero-arrow-container">
+                <a href="#about" class="hero-arrow-link" aria-label="Go to the next section">
+                    <img src="assets/icons/arrow_down.svg" alt="" class="hero-arrow-icon">
+                </a>
+            </div>
         </section>
 
         <!-- ABOUT -->
@@ -619,8 +638,9 @@
                         <div class="box-overlay"></div>
                         <div class="box-content">
                             <div class="box-text redesign-text">
-                                <h3 class="box-title">Title</h3>
-                                <p class="box-description">Description</p>
+                                <h3 class="box-title">FFVII Rebirth Summons</h3>
+                                <p class="box-description">Linear audio redesign of three FFVII summons, using elemental
+                                    powers to explore different sound design approaches</p>
                             </div>
                             <div class="arrow-right">
                                 <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty" alt="">
@@ -666,6 +686,8 @@
             </form>
         </section>
 
+        <!-- MODALS -->
+
         <dialog class="modal" id="videoModal">
             <video controls preload="none">
                 <source id="videoSourceWebm" type="video/webm">
@@ -679,7 +701,6 @@
     <footer>
         <div class="footer-container">
             <a class="footer-mail" href="mailto:dariomenik@gmail.com"> dariomenik@gmail.com </a>
-            <p class="hideOnMobile" style="cursor: default;">·</p>
             <div class="footer-social">
                 <a href="https://wa.me/+393883917855" target="_blank" rel="noopener noreferrer">
                     <img class="socials-icon" src="assets/icons/socials/whatsapp.svg" alt="Contact me on WhatsApp">

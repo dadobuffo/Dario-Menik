@@ -1,4 +1,4 @@
-// HEADER E MENU MOBILE
+// HEADER MOBILE
 
 document.addEventListener("DOMContentLoaded", function () {
   const menuToggle = document.getElementById("menuToggle");
@@ -6,17 +6,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const mobileLinks = document.querySelectorAll(".mobile-link");
   const body = document.body;
 
-  // Funzione per aprire il menu mobile (toglie solo overflow)
   function openMenu() {
     body.style.overflow = "hidden";
   }
 
-  // Funzione per chiudere il menu mobile (ripristina overflow)
   function closeMenu() {
     body.style.overflow = "";
   }
 
-  // Aggiungi/rimuovi classe active al toggle (CSS gestisce la visibilità)
   if (menuToggle) {
     menuToggle.addEventListener("click", function (e) {
       e.stopPropagation();
@@ -34,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Chiudi menu cliccando su un link
   mobileLinks.forEach((link) => {
     link.addEventListener("click", function () {
       menuToggle.classList.remove("active");
@@ -43,7 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Chiudi menu cliccando fuori dall'overlay
   if (mobileOverlay) {
     mobileOverlay.addEventListener("click", function (e) {
       if (e.target === mobileOverlay) {
@@ -54,7 +49,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Chiudi menu con ESC
   document.addEventListener("keydown", function (e) {
     if (
       e.key === "Escape" &&
@@ -67,17 +61,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // HEADER FISSO (per desktop)
+  // FIXED HEADER
+
   function updateHeaderVisibility() {
     const fixedHeader = document.querySelector(".fixed-header");
     if (!fixedHeader) return;
 
-    // Calcola soglia in base alla dimensione dello schermo
     let scrollThreshold = window.matchMedia("(max-width: 800px)").matches
       ? 496
       : 816;
 
-    // Aggiorna la posizione dell'header fisso
     if (window.scrollY > scrollThreshold) {
       fixedHeader.style.top = "0";
     } else {
@@ -85,27 +78,35 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Inizializza l'header fisso solo su desktop (>768px)
   if (window.innerWidth > 768) {
     window.addEventListener("scroll", updateHeaderVisibility);
-    updateHeaderVisibility(); // Chiamata iniziale
+    updateHeaderVisibility();
   }
 
-  // ARROW ICON
+  // CLAMP TITLE SCALE
 
-  const heroArrow = document.querySelector(".hero-arrow-icon");
-  if (heroArrow) {
-    heroArrow.addEventListener("click", (e) => {
-      e.preventDefault();
-      const target = document.querySelector("#about");
-      if (target) {
-        const offset = window.innerWidth <= 768 ? 70 : 0;
-        const top =
-          target.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top: top, behavior: "smooth" });
-      }
-    });
+  const el = document.querySelector(".hero-title");
+
+  function updateScale() {
+    const minWidth = 320;
+    const maxWidth = 768;
+    const minScale = 0.45;
+    const maxScale = 1;
+
+    const width = window.innerWidth;
+
+    let scale =
+      minScale +
+      (maxScale - minScale) * ((width - minWidth) / (maxWidth - minWidth));
+
+    scale = Math.min(Math.max(scale, minScale), maxScale);
+
+    el.style.transform = `scale(${scale})`;
   }
+
+  updateScale();
+
+  window.addEventListener("resize", updateScale);
 
   // MODALS
 
