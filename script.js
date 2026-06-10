@@ -118,11 +118,34 @@ document.addEventListener("DOMContentLoaded", function () {
     const sourceWebm = document.getElementById("videoSourceWebm");
     const sourceMp4 = document.getElementById("videoSourceMp4");
 
+    const gifVideos = document.querySelectorAll(".video-stop");
+
+    function pauseAllGifs() {
+      gifVideos.forEach((v) => v.pause());
+    }
+
+    function resumeVisibleGifs() {
+      gifVideos.forEach((v) => {
+        const rect = v.getBoundingClientRect();
+        const isVisible =
+          rect.top < window.innerHeight &&
+          rect.bottom > 0 &&
+          rect.left < window.innerWidth &&
+          rect.right > 0;
+        if (isVisible) {
+          v.play().catch((e) => console.log("Playback prevented:", e));
+        }
+      });
+    }
+
     function closeModal() {
       video.pause();
       modal.classList.remove("show");
       document.body.style.overflow = "";
-      setTimeout(() => modal.close(), 300);
+      setTimeout(() => {
+        modal.close();
+        resumeVisibleGifs();
+      }, 300);
     }
 
     openButtons.forEach((btn) => {
@@ -141,6 +164,11 @@ document.addEventListener("DOMContentLoaded", function () {
         modal.showModal();
         requestAnimationFrame(() => modal.classList.add("show"));
         document.body.style.overflow = "hidden";
+
+        modal.addEventListener("transitionend", function onOpen() {
+          modal.removeEventListener("transitionend", onOpen);
+          pauseAllGifs();
+        });
       });
     });
 
@@ -181,7 +209,7 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     videos.forEach((video) => observer.observe(video));
