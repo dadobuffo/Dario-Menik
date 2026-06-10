@@ -121,7 +121,9 @@ main {
   border: 1px solid rgba(0, 0, 0, 0.4);
   border-radius: 4px;
 
-  transition: color 0.15s ease, background-color 0.15s ease;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease;
 }
 
 .button:hover {
@@ -616,7 +618,9 @@ header {
   border: 2px solid rgba(255, 255, 255, 1);
   border-radius: 4px;
 
-  transition: color 0.1s ease, background-color 0.1s ease;
+  transition:
+    color 0.1s ease,
+    background-color 0.1s ease;
 }
 
 .hero-button button:hover {
@@ -918,7 +922,10 @@ header {
   transform: translate(-50%, -50%) scale(0.8);
   opacity: 0;
   z-index: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease, z-index 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease,
+    z-index 0.3s ease;
 }
 
 .slide.active {
@@ -1054,7 +1061,9 @@ header {
   background: rgba(0, 0, 0, 0);
   backdrop-filter: blur(0px);
 
-  transition: background 0.3s, backdrop-filter 0.3s;
+  transition:
+    background 0.3s,
+    backdrop-filter 0.3s;
 }
 
 .modal.show::backdrop {
