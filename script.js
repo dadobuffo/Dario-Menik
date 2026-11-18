@@ -1,275 +1,239 @@
-// HEADER MOBILE
+function initHeader() {
+  const header = document.querySelector(".fixed-header");
+  const narrowDesktop = window.matchMedia("(max-width: 800px)");
+  const mobile = window.matchMedia("(max-width: 768px)");
 
-document.addEventListener("DOMContentLoaded", function () {
-  const menuToggle = document.getElementById("menuToggle");
-  const mobileOverlay = document.getElementById("mobileOverlay");
-  const mobileLinks = document.querySelectorAll(".mobile-link");
-  const body = document.body;
+  if (header) {
+    function updateHeader() {
+      const threshold = narrowDesktop.matches ? 496 : 816;
+      const visible = !mobile.matches && window.scrollY > threshold;
+      header.classList.toggle("visible", visible);
+      header.inert = !visible;
+    }
 
-  function openMenu() {
-    body.style.overflow = "hidden";
+    window.addEventListener("scroll", updateHeader, { passive: true });
+    narrowDesktop.addEventListener("change", updateHeader);
+    mobile.addEventListener("change", updateHeader);
+    updateHeader();
   }
 
-  function closeMenu() {
-    body.style.overflow = "";
+  const title = document.querySelector(".hero-title");
+  if (title) {
+    function updateScale() {
+      const scale = 0.45 + 0.55 * ((window.innerWidth - 320) / (768 - 320));
+      title.style.transform = `scale(${Math.min(Math.max(scale, 0.45), 1)})`;
+    }
+
+    window.addEventListener("resize", updateScale);
+    updateScale();
+  }
+}
+
+function initMobileMenu(updatePreviews) {
+  const toggle = document.getElementById("menuToggle");
+  const overlay = document.getElementById("mobileOverlay");
+
+  if (!toggle || !overlay) return;
+
+  const mobile = window.matchMedia("(max-width: 768px)");
+  const links = [...overlay.querySelectorAll(".mobile-link")];
+  const focusable = [toggle, ...links];
+  const background = [...document.querySelectorAll("body > main, body > footer")];
+
+  function setOpen(open, restoreFocus = true) {
+    toggle.classList.toggle("active", open);
+    overlay.classList.toggle("active", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    document.body.classList.toggle("menu-open", open);
+    updatePreviews();
+    background.forEach((element) => { element.inert = open; });
+
+    if (open) links[0]?.focus();
+    else if (restoreFocus) toggle.focus({ preventScroll: true });
   }
 
-  if (menuToggle) {
-    menuToggle.addEventListener("click", function (e) {
-      e.stopPropagation();
-      const isActive = mobileOverlay.classList.contains("active");
+  toggle.addEventListener("click", () => {
+    setOpen(!overlay.classList.contains("active"));
+  });
+  overlay.addEventListener("click", (event) => {
+    if (event.target === overlay) setOpen(false);
+  });
+  links.forEach((link) => link.addEventListener("click", () => setOpen(false)));
+  mobile.addEventListener("change", () => {
+    if (!mobile.matches && overlay.classList.contains("active")) setOpen(false, false);
+  });
+  document.addEventListener("keydown", (event) => {
+    if (!overlay.classList.contains("active")) return;
 
-      if (isActive) {
-        menuToggle.classList.remove("active");
-        mobileOverlay.classList.remove("active");
-        closeMenu();
-      } else {
-        menuToggle.classList.add("active");
-        mobileOverlay.classList.add("active");
-        openMenu();
+    if (event.key === "Escape") {
+      setOpen(false);
+    } else if (event.key === "Tab") {
+      const boundary = event.shiftKey ? focusable[0] : focusable.at(-1);
+      if (document.activeElement === boundary) {
+        event.preventDefault();
+        (event.shiftKey ? focusable.at(-1) : focusable[0]).focus();
       }
-    });
+    }
+  });
+}
+
+function setVideoSources(video, { webm, mp4 } = {}) {
+  video.querySelectorAll("source").forEach((source) => source.remove());
+  const fallback = video.firstChild;
+
+  for (const [format, url] of [["webm", webm], ["mp4", mp4]]) {
+    if (!url) continue;
+    const source = document.createElement("source");
+    source.src = url;
+    source.type = `video/${format}`;
+    video.insertBefore(source, fallback);
   }
 
-  mobileLinks.forEach((link) => {
-    link.addEventListener("click", function () {
-      menuToggle.classList.remove("active");
-      mobileOverlay.classList.remove("active");
-      closeMenu();
+  video.load();
+}
+
+function initVideoModal(dialog, updatePreviews) {
+  if (!dialog) return;
+
+  const video = dialog.querySelector("video");
+  let opener;
+  let backdropPressed = false;
+
+  function isBackdrop(event) {
+    if (event.target !== dialog) return false;
+    const { left, right, top, bottom } = dialog.getBoundingClientRect();
+    return event.clientX < left || event.clientX > right ||
+      event.clientY < top || event.clientY > bottom;
+  }
+
+  document.querySelectorAll(".open-modal").forEach((button) => {
+    button.addEventListener("click", () => {
+      if (dialog.open) return;
+      opener = button;
+      video.poster = button.dataset.poster;
+      setVideoSources(video, button.dataset);
+      dialog.showModal();
+      updatePreviews();
+      requestAnimationFrame(() => {
+        if (dialog.open) dialog.classList.add("show");
+      });
     });
   });
 
-  if (mobileOverlay) {
-    mobileOverlay.addEventListener("click", function (e) {
-      if (e.target === mobileOverlay) {
-        menuToggle.classList.remove("active");
-        mobileOverlay.classList.remove("active");
-        closeMenu();
-      }
-    });
-  }
-
-  document.addEventListener("keydown", function (e) {
-    if (
-      e.key === "Escape" &&
-      mobileOverlay &&
-      mobileOverlay.classList.contains("active")
-    ) {
-      menuToggle.classList.remove("active");
-      mobileOverlay.classList.remove("active");
-      closeMenu();
-    }
+  dialog.querySelector(".close-modal").addEventListener("click", () => dialog.close());
+  dialog.addEventListener("pointerdown", (event) => {
+    backdropPressed = isBackdrop(event);
   });
+  dialog.addEventListener("click", (event) => {
+    if (backdropPressed && isBackdrop(event)) dialog.close();
+    backdropPressed = false;
+  });
+  dialog.addEventListener("close", () => {
+    if (dialog.open) return;
+    video.pause();
+    dialog.classList.remove("show");
+    updatePreviews();
+    opener?.focus({ preventScroll: true });
+  });
+}
 
-  // FIXED HEADER
+function initPreviews(dialog) {
+  const videos = [...document.querySelectorAll(".video-stop")];
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const nearby = new Set();
+  const visible = new Set();
 
-  function updateHeaderVisibility() {
-    const fixedHeader = document.querySelector(".fixed-header");
-    if (!fixedHeader) return;
+  function update() {
+    videos.forEach((video) => {
+      const canAnimate = !reducedMotion.matches;
+      const hasSources = !!video.querySelector("source");
 
-    let scrollThreshold = window.matchMedia("(max-width: 800px)").matches
-      ? 496
-      : 816;
-
-    if (window.scrollY > scrollThreshold) {
-      fixedHeader.style.top = "0";
-    } else {
-      fixedHeader.style.top = "-64px";
-    }
-  }
-
-  if (window.innerWidth > 768) {
-    window.addEventListener("scroll", updateHeaderVisibility);
-    updateHeaderVisibility();
-  }
-
-  // CLAMP TITLE SCALE
-
-  const el = document.querySelector(".hero-title");
-
-  function updateScale() {
-    const minWidth = 320;
-    const maxWidth = 768;
-    const minScale = 0.45;
-    const maxScale = 1;
-
-    const width = window.innerWidth;
-
-    let scale =
-      minScale +
-      (maxScale - minScale) * ((width - minWidth) / (maxWidth - minWidth));
-
-    scale = Math.min(Math.max(scale, minScale), maxScale);
-
-    el.style.transform = `scale(${scale})`;
-  }
-
-  updateScale();
-
-  window.addEventListener("resize", updateScale);
-
-  // MODALS
-
-  const openButtons = document.querySelectorAll(".open-modal");
-  const modal = document.getElementById("videoModal");
-
-  if (modal) {
-    const video = modal.querySelector("video");
-    const sourceWebm = document.getElementById("videoSourceWebm");
-    const sourceMp4 = document.getElementById("videoSourceMp4");
-
-    const gifVideos = document.querySelectorAll(".video-stop");
-
-    function pauseAllGifs() {
-      gifVideos.forEach((v) => v.pause());
-    }
-
-    function resumeVisibleGifs() {
-      gifVideos.forEach((v) => {
-        const rect = v.getBoundingClientRect();
-        const isVisible =
-          rect.top < window.innerHeight &&
-          rect.bottom > 0 &&
-          rect.left < window.innerWidth &&
-          rect.right > 0;
-        if (isVisible) {
-          v.play().catch((e) => console.log("Playback prevented:", e));
-        }
-      });
-    }
-
-    function closeModal() {
-      video.pause();
-      modal.classList.remove("show");
-      document.body.style.overflow = "";
-      setTimeout(() => {
-        modal.close();
-        resumeVisibleGifs();
-      }, 300);
-    }
-
-    openButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        if (mobileOverlay.classList.contains("active")) {
-          menuToggle.classList.remove("active");
-          mobileOverlay.classList.remove("active");
-          closeMenu();
-        }
-
-        video.poster = btn.dataset.poster;
-        if (sourceWebm) sourceWebm.src = btn.dataset.webm;
-        if (sourceMp4) sourceMp4.src = btn.dataset.mp4;
-        video.load();
-
-        modal.showModal();
-        requestAnimationFrame(() => modal.classList.add("show"));
-        document.body.style.overflow = "hidden";
-
-        modal.addEventListener("transitionend", function onOpen() {
-          modal.removeEventListener("transitionend", onOpen);
-          pauseAllGifs();
-        });
-      });
-    });
-
-    const closeModalBtn = modal.querySelector(".close-modal");
-    if (closeModalBtn) {
-      closeModalBtn.addEventListener("click", closeModal);
-    }
-
-    modal.addEventListener("click", (e) => {
-      const rect = modal.getBoundingClientRect();
-      if (
-        e.clientX < rect.left ||
-        e.clientX > rect.right ||
-        e.clientY < rect.top ||
-        e.clientY > rect.bottom
-      ) {
-        closeModal();
+      if (!canAnimate && hasSources) {
+        setVideoSources(video);
+      } else if (canAnimate && !hasSources && (nearby.has(video) || visible.has(video))) {
+        video.preload = "metadata";
+        setVideoSources(video, video.dataset);
       }
-    });
 
-    modal.addEventListener("cancel", (e) => {
-      e.preventDefault();
-      closeModal();
+      const shouldPlay = canAnimate && visible.has(video) && !dialog?.open &&
+        !document.body.classList.contains("menu-open") && !document.hidden;
+      if (shouldPlay) video.play().catch(() => {});
+      else video.pause();
     });
   }
 
-  // GIF PAUSE
-  const videos = document.querySelectorAll(".video-stop");
-  if (videos.length > 0) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const video = entry.target;
-          if (entry.isIntersecting) {
-            video.play().catch((e) => console.log("Playback prevented:", e));
-          } else {
-            video.pause();
-          }
-        });
-      },
-      { threshold: 0.1 },
-    );
+  function observe(set, options) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(({ target, isIntersecting }) => {
+        if (isIntersecting) set.add(target);
+        else set.delete(target);
+      });
+      update();
+    }, options);
 
     videos.forEach((video) => observer.observe(video));
   }
 
-  // CAROUSEL
+  if (videos.length && "IntersectionObserver" in window) {
+    observe(nearby, { rootMargin: "200px" });
+    observe(visible);
+    reducedMotion.addEventListener("change", update);
+    document.addEventListener("visibilitychange", update);
+  }
 
+  return update;
+}
+
+function initCarousels() {
   document.querySelectorAll(".carousel-container").forEach((container) => {
-    const slides = container.querySelectorAll(".slide");
-    const prevBtn = container.querySelector(".carousel-prev");
-    const nextBtn = container.querySelector(".carousel-next");
+    const slides = [...container.querySelectorAll(".slide")];
     const carousel = container.querySelector(".carousel");
+    if (slides.length < 2 || !carousel) return;
+
     let current = 0;
 
     function updateSlides() {
-      slides.forEach((slide, i) => {
-        const content = slide.querySelector(".box-content");
-        slide.classList.remove("active", "left", "right");
-
-        if (i === current) {
-          slide.classList.add("active");
-          if (content) content.style.opacity = "1";
-        } else if (i === (current - 1 + slides.length) % slides.length) {
-          slide.classList.add("left");
-          if (content) content.style.opacity = "0";
-        } else if (i === (current + 1) % slides.length) {
-          slide.classList.add("right");
-          if (content) content.style.opacity = "0";
-        } else if (content) {
-          content.style.opacity = "0";
-        }
+      slides.forEach((slide, index) => {
+        const active = index === current;
+        slide.classList.toggle("active", active);
+        slide.classList.toggle("left", !active && index === (current - 1 + slides.length) % slides.length);
+        slide.classList.toggle("right", !active && !slide.classList.contains("left") &&
+          index === (current + 1) % slides.length);
+        slide.inert = !active;
       });
     }
 
-    function nextSlide() {
-      current = (current + 1) % slides.length;
+    function move(step) {
+      current = (current + step + slides.length) % slides.length;
       updateSlides();
     }
 
-    function prevSlide() {
-      current = (current - 1 + slides.length) % slides.length;
-      updateSlides();
-    }
+    container.querySelector(".carousel-prev")?.addEventListener("click", () => move(-1));
+    container.querySelector(".carousel-next")?.addEventListener("click", () => move(1));
 
-    if (prevBtn) prevBtn.addEventListener("click", prevSlide);
-    if (nextBtn) nextBtn.addEventListener("click", nextSlide);
-
-    if (carousel) {
-      let startX = 0;
-      carousel.addEventListener("touchstart", (e) => {
-        startX = e.touches[0].clientX;
-      });
-      carousel.addEventListener("touchend", (e) => {
-        const diff = e.changedTouches[0].clientX - startX;
-        if (Math.abs(diff) > 50) {
-          diff < 0 ? nextSlide() : prevSlide();
-        }
-      });
-    }
+    let start;
+    carousel.addEventListener("touchstart", ({ touches }) => {
+      start = touches.length === 1 ? touches[0] : null;
+    }, { passive: true });
+    carousel.addEventListener("touchend", ({ changedTouches }) => {
+      if (!start) return;
+      const dx = changedTouches[0].clientX - start.clientX;
+      const dy = changedTouches[0].clientY - start.clientY;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) move(dx < 0 ? 1 : -1);
+      start = null;
+    }, { passive: true });
+    carousel.addEventListener("touchcancel", () => { start = null; });
 
     updateSlides();
   });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const dialog = document.getElementById("videoModal");
+  const updatePreviews = initPreviews(dialog);
+  initHeader();
+  initMobileMenu(updatePreviews);
+  initVideoModal(dialog, updatePreviews);
+  initCarousels();
 });

@@ -31,13 +31,18 @@
     ">
     <meta name="referrer" content="no-referrer">
 
+    <link rel="canonical" href="https://www.dariomenik.com/">
+
     <!-- OPEN GRAPH -->
 
     <meta property="og:title" content="Dario Menik | Sound Designer & Audio Engineer">
     <meta property="og:description"
         content="Sound Designer and Composer for games and media, audio engineer at Artifacts Recordings.">
-    <meta property="og:image" content="">
-    <meta property="og:url" content="https://dariomenik.com/">
+    <meta property="og:image" content="https://www.dariomenik.com/assets/images/social-preview.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Portrait of Dario Menik, Sound Designer &amp; Audio Engineer">
+    <meta property="og:url" content="https://www.dariomenik.com/">
     <meta property="og:type" content="website">
 
     <!-- TWITTER CARD -->
@@ -46,7 +51,8 @@
     <meta name="twitter:title" content="Dario Menik | Sound Designer & Audio Engineer">
     <meta name="twitter:description"
         content="Sound Designer and Composer for games and media, audio engineer at Artifacts Recordings.">
-    <meta name="twitter:image" content="">
+    <meta name="twitter:image" content="https://www.dariomenik.com/assets/images/social-preview.jpg">
+    <meta name="twitter:image:alt" content="Portrait of Dario Menik, Sound Designer &amp; Audio Engineer">
 
     <!-- JSON-LD -->
 
@@ -58,8 +64,8 @@
       "alternateName": "Dario Menichetti",
       "jobTitle": "Sound Designer, Audio Engineer, Composer",
       "description": "Sound Designer and Composer for games and media, audio engineer at Artifacts Recordings.",
-      "image": "https://dariomenik.com/assets/images/dario-menik.webp",
-      "url": "https://dariomenik.com",
+      "image": "https://www.dariomenik.com/assets/images/dario-menik.webp",
+      "url": "https://www.dariomenik.com",
       "sameAs": [
         "https://linkedin.com/in/dario-menichetti/",
         "https://instagram.com/dariomenik_mon/",
@@ -167,7 +173,7 @@
 
         <img class="mobile-logo" src="assets/icons/logo_black.svg" alt="Dario Menik Logo">
         <div class="mobile-header">
-            <button class="menu-toggle" aria-label="Open menu" id="menuToggle">
+            <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileOverlay" id="menuToggle">
                 <img src="assets/icons/menu.svg" alt="Menu" class="menu-icon">
                 <img src="assets/icons/close.svg" alt="Close" class="close-icon">
             </button>
@@ -190,10 +196,8 @@
         <section class="hero-section" id="home">
             <div class="hero-box">
                 <div class="box-background">
-                    <video loop muted playsinline preload="auto" fetchpriority="high" autoplay class="video-stop"
-                        poster="assets/videos/prey_poster.webp">
-                        <source src="assets/videos/prey_gif.webm" type="video/webm">
-                        <source src="assets/videos/prey_gif.mp4" type="video/mp4">
+                    <video loop muted playsinline preload="none" class="video-stop" aria-hidden="true" poster="assets/videos/prey_poster.webp"
+                        data-webm="assets/videos/prey_gif.webm" data-mp4="assets/videos/prey_gif.mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
@@ -210,7 +214,7 @@
                     </h1>
                 </div>
                 <div class="hero-button">
-                    <button class="button open-modal" data-poster="assets/videos/weapons_poster.webp" data-webm=""
+                    <button class="button open-modal" data-poster="assets/videos/weapons_poster.webp"
                         data-mp4="assets/videos/weapons_video.mp4">
                         PLAY REEL
                     </button>
@@ -270,7 +274,7 @@
 
             <div class="showreel-button">
                 <hr>
-                <button class="button open-modal" data-poster="assets/videos/weapons_poster.webp" data-webm=""
+                <button class="button open-modal" data-poster="assets/videos/weapons_poster.webp"
                     data-mp4="assets/videos/weapons_video.mp4">
                     SHOWREEL
                 </button>
@@ -411,8 +415,10 @@
                 </div>
 
                 <div class="implementation-grid">
-                    <div class="implementation-grid-element open-modal" data-poster="assets/videos/fmod_poster.webp"
-                        data-webm="" data-mp4="assets/videos/fmod_video.mp4">
+                    <div class="implementation-grid-element">
+                        <button type="button" class="card-play open-modal" data-poster="assets/videos/fmod_poster.webp"
+                            data-mp4="assets/videos/fmod_video.mp4"
+                            aria-label="Play FMOD Implementation"></button>
                         <div class="box-background">
                             <img src="assets/images/fmod.webp" alt="">
                         </div>
@@ -430,8 +436,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="implementation-grid-element open-modal" data-poster="assets/videos/wwise_poster.webp"
-                        data-webm="" data-mp4="assets/videos/wwise_video.mp4">
+                    <div class="implementation-grid-element">
+                        <button type="button" class="card-play open-modal" data-poster="assets/videos/wwise_poster.webp"
+                            data-mp4="assets/videos/wwise_video.mp4"
+                            aria-label="Play Wwise Implementation"></button>
                         <div class="box-background">
                             <img src="assets/images/wwise.webp" alt="">
                         </div>
@@ -448,17 +456,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="implementation-grid-element open-modal" data-poster="assets/videos/unity_poster.webp"
-                        data-webm="" data-mp4="assets/videos/unity_video.mp4">
+                    <div class="implementation-grid-element">
+                        <button type="button" class="card-play open-modal" data-poster="assets/videos/blueprint_poster.webp"
+                            data-mp4="assets/videos/blueprint_video.mp4"
+                            aria-label="Play Unreal Engine Blueprints"></button>
                         <div class="box-background">
-                            <img src="assets/images/unity.webp" alt="">
+                            <img src="assets/videos/blueprint_poster.webp" alt="">
                         </div>
                         <div class="box-overlay"></div>
                         <div class="box-content">
                             <div class="box-text implementation-text">
-                                <h3 class="box-title">Unity Implementation</h3>
-                                <p class="box-description">Audio implementation in Unity using C# scripting and FMOD
-                                    Studio integration, from 3D spatialization to gameplay-driven callbacks</p>
+                                <h3 class="box-title">Unreal Engine Blueprints</h3>
+                                <p class="box-description">Audio implementation with Unreal Engine Blueprints, connecting gameplay events to sound through visual scripting.</p>
                             </div>
                             <div class="arrow-right">
                                 <img src="assets/icons/arrow_right_box_empty.svg" class="arrow-right-empty" alt="">
@@ -471,9 +480,11 @@
                 <div class="carousel-container">
                     <div class="carousel">
                         <div class="slide active">
-                            <div class="implementation-grid-element open-modal"
-                                data-poster="assets/videos/fmod_poster.webp" data-webm=""
-                                data-mp4="assets/videos/fmod_video.mp4">
+                            <div class="implementation-grid-element">
+                                <button type="button" class="card-play open-modal"
+                                    data-poster="assets/videos/fmod_poster.webp"
+                                    data-mp4="assets/videos/fmod_video.mp4"
+                                    aria-label="Play FMOD Implementation"></button>
                                 <div class="box-background">
                                     <img src="assets/images/fmod.webp" alt="">
                                 </div>
@@ -495,9 +506,11 @@
                             </div>
                         </div>
                         <div class="slide right">
-                            <div class="implementation-grid-element open-modal"
-                                data-poster="assets/videos/wwise_poster.webp" data-webm=""
-                                data-mp4="assets/videos/wwise_video.mp4">
+                            <div class="implementation-grid-element">
+                                <button type="button" class="card-play open-modal"
+                                    data-poster="assets/videos/wwise_poster.webp"
+                                    data-mp4="assets/videos/wwise_video.mp4"
+                                    aria-label="Play Wwise Implementation"></button>
                                 <div class="box-background">
                                     <img src="assets/images/wwise.webp" alt="">
                                 </div>
@@ -518,18 +531,19 @@
                             </div>
                         </div>
                         <div class="slide left">
-                            <div class="implementation-grid-element open-modal"
-                                data-poster="assets/videos/unity_poster.webp" data-webm=""
-                                data-mp4="assets/videos/unity_video.mp4">
+                            <div class="implementation-grid-element">
+                                <button type="button" class="card-play open-modal"
+                                    data-poster="assets/videos/blueprint_poster.webp"
+                                    data-mp4="assets/videos/blueprint_video.mp4"
+                                    aria-label="Play Unreal Engine Blueprints"></button>
                                 <div class="box-background">
-                                    <img src="assets/images/unity.webp" alt="">
+                                    <img src="assets/videos/blueprint_poster.webp" alt="">
                                 </div>
                                 <div class="box-overlay"></div>
                                 <div class="box-content">
                                     <div class="box-text implementation-text">
-                                        <h3 class="box-title">Unity Implementation</h3>
-                                        <p class="box-description">Audio implementation in Unity using C# scripting and
-                                            FMOD Studio integration, from 3D spatialization to gameplay-driven callbacks
+                                        <h3 class="box-title">Unreal Engine Blueprints</h3>
+                                        <p class="box-description">Audio implementation with Unreal Engine Blueprints, connecting gameplay events to sound through visual scripting.
                                         </p>
                                     </div>
                                     <div class="arrow-right">
@@ -568,12 +582,13 @@
                 </div>
 
                 <div class="redesign-grid">
-                    <div class="redesign-grid-element open-modal" data-poster="assets/videos/weapons_poster.webp"
-                        data-webm="" data-mp4="assets/videos/weapons_video.mp4">
+                    <div class="redesign-grid-element">
+                        <button type="button" class="card-play open-modal" data-poster="assets/videos/weapons_poster.webp"
+                            data-mp4="assets/videos/weapons_video.mp4"
+                            aria-label="Play Weapons Redesign Reel"></button>
                         <div class="box-background">
-                            <video loop muted playsinline preload="none" autoplay class="video-stop">
-                                <source src="assets/videos/weapons_gif.webm" type="video/webm">
-                                <source src="assets/videos/weapons_gif.mp4" type="video/mp4">
+                            <video loop muted playsinline preload="none" class="video-stop" aria-hidden="true" poster="assets/videos/weapons_poster.webp"
+                                data-webm="assets/videos/weapons_gif.webm" data-mp4="assets/videos/weapons_gif.mp4">
                                 Your browser does not support the video tag.
                             </video>
                         </div>
@@ -593,12 +608,13 @@
                         </div>
                     </div>
 
-                    <div class="redesign-grid-element open-modal" data-poster="assets/videos/prey_poster.webp"
-                        data-webm="" data-mp4="assets/videos/prey_video.mp4">
+                    <div class="redesign-grid-element">
+                        <button type="button" class="card-play open-modal" data-poster="assets/videos/prey_poster.webp"
+                            data-mp4="assets/videos/prey_video.mp4"
+                            aria-label="Play Prey | E3 Trailer"></button>
                         <div class="box-background">
-                            <video loop muted playsinline preload="none" autoplay class="video-stop">
-                                <source src="assets/videos/prey_gif.webm" type="video/webm">
-                                <source src="assets/videos/prey_gif.mp4" type="video/mp4">
+                            <video loop muted playsinline preload="none" class="video-stop" aria-hidden="true" poster="assets/videos/prey_poster.webp"
+                                data-webm="assets/videos/prey_gif.webm" data-mp4="assets/videos/prey_gif.mp4">
                                 Your browser does not support the video tag.
                             </video>
                         </div>
@@ -616,12 +632,13 @@
                         </div>
                     </div>
 
-                    <div class="redesign-grid-element open-modal" data-poster="assets/videos/ffvii_poster.webp"
-                        data-webm="" data-mp4="assets/videos/ffvii_video.mp4">
+                    <div class="redesign-grid-element">
+                        <button type="button" class="card-play open-modal" data-poster="assets/videos/ffvii_poster.webp"
+                            data-mp4="assets/videos/ffvii_video.mp4"
+                            aria-label="Play FFVII Rebirth Summons"></button>
                         <div class="box-background">
-                            <video loop muted playsinline preload="none" autoplay class="video-stop">
-                                <source src="assets/videos/ffvii_gif.webm" type="video/webm">
-                                <source src="assets/videos/ffvii_gif.mp4" type="video/mp4">
+                            <video loop muted playsinline preload="none" class="video-stop" aria-hidden="true" poster="assets/videos/ffvii_poster.webp"
+                                data-webm="assets/videos/ffvii_gif.webm" data-mp4="assets/videos/ffvii_gif.mp4">
                                 Your browser does not support the video tag.
                             </video>
                         </div>
@@ -639,12 +656,13 @@
                         </div>
                     </div>
 
-                    <div class="redesign-grid-element open-modal" data-poster="assets/videos/intergalactic_poster.webp"
-                        data-webm="" data-mp4="assets/videos/intergalactic_video.mp4">
+                    <div class="redesign-grid-element">
+                        <button type="button" class="card-play open-modal" data-poster="assets/videos/intergalactic_poster.webp"
+                            data-mp4="assets/videos/intergalactic_video.mp4"
+                            aria-label="Play Intergalactic | Trailer"></button>
                         <div class="box-background">
-                            <video loop muted playsinline preload="none" autoplay class="video-stop">
-                                <source src="assets/videos/intergalactic_gif.webm" type="video/webm">
-                                <source src="assets/videos/intergalactic_gif.mp4" type="video/mp4">
+                            <video loop muted playsinline preload="none" class="video-stop" aria-hidden="true" poster="assets/videos/intergalactic_poster.webp"
+                                data-webm="assets/videos/intergalactic_gif.webm" data-mp4="assets/videos/intergalactic_gif.mp4">
                                 Your browser does not support the video tag.
                             </video>
                         </div>
@@ -662,13 +680,13 @@
                         </div>
                     </div>
 
-                    <div class="redesign-grid-element open-modal" data-poster="assets/videos/bg3_poster.webp"
-                        data-webm="" data-mp4="assets/videos/bg3_video.mp4">
+                    <div class="redesign-grid-element">
+                        <button type="button" class="card-play open-modal" data-poster="assets/videos/bg3_poster.webp"
+                            data-mp4="assets/videos/bg3_video.mp4"
+                            aria-label="Play BG3 Magic Spells"></button>
                         <div class="box-background">
-                            <video loop muted playsinline preload="none" autoplay class="video-stop">
-
-                                <source src="assets/videos/bg3_gif.webm" type="video/webm">
-                                <source src="assets/videos/bg3_gif.mp4" type="video/mp4">
+                            <video loop muted playsinline preload="none" class="video-stop" aria-hidden="true" poster="assets/videos/bg3_poster.webp"
+                                data-webm="assets/videos/bg3_gif.webm" data-mp4="assets/videos/bg3_gif.mp4">
                                 Your browser does not support the video tag.
                             </video>
                         </div>
@@ -704,14 +722,19 @@
             <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
 
                 <input type="hidden" name="access_key" value="4c5c682c-ebd8-4920-be9d-38d34ea3ecfb">
-                <input type="hidden" name="redirect" value="https://dariomenik.com/thanks.html">
+                <input type="hidden" name="redirect" value="https://www.dariomenik.com/thanks.html">
                 <input type="hidden" name="replyto" value="email">
                 <input type="hidden" name="from_name" value="dariomenik.com">
 
-                <input class="contact-form-box" type="text" name="name" placeholder="your name &ast;" required>
-                <input class="contact-form-box" type="email" name="email" placeholder="email &ast;" required>
-                <textarea class=" contact-form-textarea" name="message" rows="5" placeholder="message &ast;"
-                    required></textarea>
+                <label class="contact-field">Your name *
+                    <input class="contact-form-box" type="text" name="name" autocomplete="name" required>
+                </label>
+                <label class="contact-field">Email *
+                    <input class="contact-form-box" type="email" name="email" autocomplete="email" required>
+                </label>
+                <label class="contact-field">Message *
+                    <textarea class="contact-form-textarea" name="message" rows="5" required></textarea>
+                </label>
 
                 <div class="contact-form-consent">
                     <input type="checkbox" id="consent" name="custom[consent]" required>
@@ -725,13 +748,13 @@
 
         <!-- MODALS -->
 
-        <dialog class="modal" id="videoModal">
+        <dialog class="modal" id="videoModal" aria-label="Portfolio video">
             <video controls preload="none">
-                <source id="videoSourceWebm" type="video/webm">
-                <source id="videoSourceMp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-            <img class="close-modal-button close-modal" src="assets/icons/close.svg">
+            <button type="button" class="close-modal-button close-modal" aria-label="Close video" autofocus>
+                <img src="assets/icons/close.svg" alt="">
+            </button>
         </dialog>
     </main>
 
@@ -745,7 +768,7 @@
                 <a href="http://linkedin.com/in/dario-menichetti/" target="_blank" rel="noopener noreferrer">
                     <img class="socials-icon" src="assets/icons/socials/linkedin.svg" alt="Follow me on LinkedIn">
                 </a>
-                <!-- 
+                <!--
                 <a href="http://spotify.com/" target="_blank">
                     <img class="socials-icon" src="assets/icons/socials/spotify.svg" alt="Follow me on Spotify">
                 </a>
